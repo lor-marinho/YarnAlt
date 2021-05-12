@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_000053) do
+ActiveRecord::Schema.define(version: 2021_05_12_005814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "yarn_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+    t.index ["yarn_id"], name: "index_favourites_on_yarn_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +42,20 @@ ActiveRecord::Schema.define(version: 2021_05_12_000053) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "yarns", force: :cascade do |t|
+    t.string "name"
+    t.string "weight"
+    t.string "fiber"
+    t.string "needles"
+    t.string "gauge"
+    t.string "price"
+    t.bigint "brand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_yarns_on_brand_id"
+  end
+
+  add_foreign_key "favourites", "users"
+  add_foreign_key "favourites", "yarns"
+  add_foreign_key "yarns", "brands"
 end

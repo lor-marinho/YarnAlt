@@ -23,3 +23,6 @@ maryjane = User.new(
 maryjane.save!
 
 puts 'Finished!'
+
+
+

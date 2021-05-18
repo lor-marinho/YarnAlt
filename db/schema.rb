@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 2021_05_15_165446) do
     t.index ["yarn_id"], name: "index_favourites_on_yarn_id"
   end
 
+  create_table "materials", force: :cascade do |t|
+    t.string "fiber_type"
+    t.integer "percentage"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,6 +47,15 @@ ActiveRecord::Schema.define(version: 2021_05_15_165446) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "yarn_materials", force: :cascade do |t|
+    t.bigint "material_id", null: false
+    t.bigint "yarn_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["material_id"], name: "index_yarn_materials_on_material_id"
+    t.index ["yarn_id"], name: "index_yarn_materials_on_yarn_id"
   end
 
   create_table "yarns", force: :cascade do |t|
@@ -56,5 +72,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_165446) do
 
   add_foreign_key "favourites", "users"
   add_foreign_key "favourites", "yarns"
+  add_foreign_key "yarn_materials", "materials"
+  add_foreign_key "yarn_materials", "yarns"
   add_foreign_key "yarns", "brands"
 end

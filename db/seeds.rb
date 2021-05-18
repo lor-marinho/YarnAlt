@@ -6,23 +6,75 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
+auth = { username: ENV['API_USERNAME'], password: ENV['API_PASSWORD'] }
+result = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=garnstudio", basic_auth: auth)
+result = JSON.parse(result.body)
+ap result
 
-puts 'Creating user...'
 
-johndoe = User.new(
-  email: "john@doe.com",
-  password: "123456",
-  )
-johndoe.save!
+garnstudio_response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=garnstudio", basic_auth: auth)
+garnstudio = JSON.parse(garnstudio_response.body)
+garnstudio_yarn_ids = garnstudio['yarns'].map{|i| i['id']}
 
-maryjane = User.new(
-  email: "mary@jane.com",
-  password: "123456",
-  )
-maryjane.save!
+fiospingouin_response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=fios%20pingouin", basic_auth: auth)
+fiospingouin = JSON.parse(fiospingouin_response.body)
+fiospingouin_yarn_ids = fiospingouin['yarns'].map{|i| i['id']}
 
-puts 'Finished!'
+filcolana_response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=filcolana", basic_auth: auth)
+filcolana = JSON.parse(filcolana_response.body)
+filcolana_yarn_ids = filcolana['yarns'].map{|i| i['id']}
+
+circulo_response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=circulo", basic_auth: auth)
+circulo = JSON.parse(circulo_response.body)
+circulo_yarn_ids = circulo['yarns'].map{|i| i['id']}
+
+sandnesgarn_response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=sandnesgarn", basic_auth: auth)
+sandnesgarn = JSON.parse(sandnesgarn_response.body)
+sandnesgarn_yarn_ids = sandnesgarn['yarns'].map{|i| i['id']}
+
+ap garnstudio_yarn_ids.count
+ap fiospingouin_yarn_ids.count
+ap filcolana_yarn_ids.count
+ap circulo_yarn_ids.count
+ap sandnesgarn_yarn_ids.count
+
+list = []
+garnstudio_result = HTTParty.get("https://api.ravelry.com/yarns.json?ids=#{garnstudio_yarn_ids.join('+')}", basic_auth: auth)
+garnstudio_result["yarns"].map{|k, v| list << v}
+
+fiospingouin_result = HTTParty.get("https://api.ravelry.com/yarns.json?ids=#{fiospingouin_yarn_ids.join('+')}", basic_auth: auth)
+fiospingouin_result["yarns"].map{|k, v| list << v}
+
+fiospingouin_result = HTTParty.get("https://api.ravelry.com/yarns.json?ids=#{fiospingouin_yarn_ids.join('+')}", basic_auth: auth)
+fiospingouin_result["yarns"].map{|k, v| list << v}
+
+circulo_result = HTTParty.get("https://api.ravelry.com/yarns.json?ids=#{circulo_yarn_ids.join('+')}", basic_auth: auth)
+circulo_result["yarns"].map{|k, v| list << v}
+
+list.each do |yarn|
+  material = Material.create
+  Yarn.create(material:)
+
+end
+
+
+# User.destroy_all
+
+# puts 'Creating user...'
+
+# johndoe = User.new(
+#   email: "john@doe.com",
+#   password: "123456",
+#   )
+# johndoe.save!
+
+# maryjane = User.new(
+#   email: "mary@jane.com",
+#   password: "123456",
+#   )
+# maryjane.save!
+
+# puts 'Finished!'
 
 
 

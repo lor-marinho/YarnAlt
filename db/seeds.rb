@@ -1,3 +1,4 @@
+
 require 'httparty'
 require 'awesome_print'
 auth = { username: '6dbb3561967f4f03932a070fd05d3f89', password: 'xMcjWF9yKRfXTCmdLdw5Fl3G92hC00hpkHfFifLd' }

@@ -1,7 +1,9 @@
 
 require 'httparty'
 require 'awesome_print'
-auth = { username: '6dbb3561967f4f03932a070fd05d3f89', password: 'xMcjWF9yKRfXTCmdLdw5Fl3G92hC00hpkHfFifLd' }
+
+
+auth = { username: ENV['API_USERNAME'], password: ENV['API_PASSWORD'] }
 
 def get_yarn_list(brand, auth)
   response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=#{brand}", basic_auth: auth)
@@ -19,8 +21,7 @@ def get_yarns(yarn_ids, auth)
 end
 
 YARN_BRANDS = %w[garnstudio fios%20pingouin filcolana circulo sandnesgarn].freeze
-y
-arn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
+yarn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
 
 yarn_list.each do |yarn|
   # AQUI VAI A LÓGICA PARA CRIAR O YARN E O QUE MAIS QUISEREM. O yarn_list é uma lista de hashs

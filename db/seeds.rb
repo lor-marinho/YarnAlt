@@ -22,22 +22,38 @@ end
 
 YARN_BRANDS = %w[garnstudio fios%20pingouin filcolana circulo sandnesgarn].freeze
 yarn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
+# ap yarn_list.first
+YarnMaterial.destroy_all
+Yarn.destroy_all
+Brand.destroy_all
 
-yarn_list.each do |yarn|
+
+
+yarn_list.each do |yarn_data|
   # AQUI VAI A LÓGICA PARA CRIAR O YARN E O QUE MAIS QUISEREM. O yarn_list é uma lista de hashs
+  
+  # create yarn with materials
+  brand_name = yarn_data["yarn_company"]["name"]
+  brand = Brand.find_or_create_by(name: brand_name)
+  needles = yarn_data["min_needle_size"]["metric"] if yarn_data["min_needle_size"]
+  yarn = Yarn.new(
+    name: yarn_data['name'],
+    needles: needles,
+    brand: brand
+
+  )
   # create materials
-  materials = yarn['yarn_fibers'].each do |fiber|
+  yarn_data['yarn_fibers'].each do |fiber|
     material = Material.create_or_find_by(
       percentage: fiber['percentage'],
-      name: fiber['name']
+      fiber_type: fiber["fiber_type"]["name"]
+      
     )
-    puts "OK: material #{material.id} - #{material.name} created"
+    yarn.materials << material
+    puts "OK: material #{material.id} - #{material.fiber_type} created"
   end
-  # create yarn with materials
-  yarn = Yarn.new(
-    name: yarn['name']
-  )
-  yarn.materials << materials
+
+  
   yarn.save!
   puts "OK: material #{yarn.id} - #{yarn.name} created"
 end

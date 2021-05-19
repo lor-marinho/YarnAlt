@@ -30,17 +30,19 @@ Brand.destroy_all
 
 
 yarn_list.each do |yarn_data|
-  # AQUI VAI A LÓGICA PARA CRIAR O YARN E O QUE MAIS QUISEREM. O yarn_list é uma lista de hashs
+#   # AQUI VAI A LÓGICA PARA CRIAR O YARN E O QUE MAIS QUISEREM. O yarn_list é uma lista de hashs
   
-  # create yarn with materials
+#   # create yarn with materials
   brand_name = yarn_data["yarn_company"]["name"]
   brand = Brand.find_or_create_by(name: brand_name)
   needles = yarn_data["min_needle_size"]["metric"] if yarn_data["min_needle_size"]
+  weight = yarn_data['yarn_weight']['name'] if yarn_data['yarn_weight']
   yarn = Yarn.new(
     name: yarn_data['name'],
     needles: needles,
-    brand: brand
-
+    brand: brand,
+    gauge: yarn_data['min_gauge'],
+    weight: weight
   )
   # create materials
   yarn_data['yarn_fibers'].each do |fiber|

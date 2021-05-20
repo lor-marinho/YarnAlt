@@ -37,12 +37,16 @@ yarn_list.each do |yarn_data|
   brand = Brand.find_or_create_by(name: brand_name)
   needles = yarn_data["min_needle_size"]["metric"] if yarn_data["min_needle_size"]
   weight = yarn_data['yarn_weight']['name'] if yarn_data['yarn_weight']
+  discontinued = false if yarn_data['discontinued'] == "false"
+  image_url = yarn_data['photos'][0]['medium_url'] if yarn_data['photos'][0]
   yarn = Yarn.new(
     name: yarn_data['name'],
     needles: needles,
     brand: brand,
     gauge: yarn_data['min_gauge'],
-    weight: weight
+    weight: weight,
+    discontinued: discontinued,
+    image_url: image_url
   )
   # create materials
   yarn_data['yarn_fibers'].each do |fiber|
@@ -57,9 +61,27 @@ yarn_list.each do |yarn_data|
 
   
   yarn.save!
-  puts "OK: material #{yarn.id} - #{yarn.name} created"
+  puts "OK: yarn #{yarn.id} - #{yarn.name} created"
 end
 
+# creating users
+User.destroy_all
+
+puts 'Creating user...'
+
+johndoe = User.new(
+  email: "john@doe.com",
+  password: "123456",
+  )
+johndoe.save!
+
+maryjane = User.new(
+  email: "mary@jane.com",
+  password: "123456",
+  )
+maryjane.save!
+
+puts 'Finished!'
 
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -122,23 +144,7 @@ end
 # end
 
 
-# User.destroy_all
 
-# puts 'Creating user...'
-
-# johndoe = User.new(
-#   email: "john@doe.com",
-#   password: "123456",
-#   )
-# johndoe.save!
-
-# maryjane = User.new(
-#   email: "mary@jane.com",
-#   password: "123456",
-#   )
-# maryjane.save!
-
-# puts 'Finished!'
 
 
 

@@ -5,28 +5,28 @@
 .card-product {
   margin-left: 30px;
   overflow: hidden;
-  height: 140px;
+  height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 400px;
 }
 
 .card-product img {
   height: 100%;
-  width: 140px;
+  width: 200px;
   object-fit: cover;
 }
 
 .card-product h2 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product p {
-  font-size: 10px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -38,13 +38,13 @@
 }
 
 .card-product-infos h3 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product-infos h5 {
-  font-size: 10px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }

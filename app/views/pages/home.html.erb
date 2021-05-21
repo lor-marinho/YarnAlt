@@ -12,20 +12,23 @@
 
   <h2>This is the body of my homepage</h2>
 
-
+<% @yarns = Yarn.all %>
+<% @materials = Material.all %>
+<% @brands = Brand.all %>
 <div class="grid-container">
-<div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
-    <h2>Yarn name</h2>
-    <h3>Brand</h3>
-    <p><strong>Weight: </strong> info</p>
-    <p><strong>Gauge: </strong> info</p>
-    <p><strong>Fiber: </strong> info</p>
-    <p><strong>Needles: </strong> info</p>
-    <p>More info...</p>
+  <% @yarns.each do |yarn| %>
+  <div class="card-product">
+    <img src="<%= yarn.image_url %>" />
+    <div class="card-product-infos">
+      <h2><%= yarn.name %></h2>
+      <h3>yarn.brand.name</h3>
+      <p><strong>Weight: </strong> <%= yarn.weight %></p>
+      <p><strong>Gauge: </strong> <%= yarn.gauge %></p>
+      <p><strong>Fiber: </strong> <%= yarn.materials.name %></p>
+      <p><strong>Needles: </strong> <%= yarn.needles %>mm</p>
+      <p>More info...</p>
+    </div>
   </div>
-
-</div>
+  <% end %>
 </div>
 

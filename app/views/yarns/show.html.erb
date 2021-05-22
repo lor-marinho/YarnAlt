@@ -1,0 +1,27 @@
+
+<div class="container">
+  
+  <div class="show-card">
+    
+    <div class="show-card-infos">
+      <h2><%= @yarn.name %></h2>
+
+      <h3><%= @yarn.brand.name %></h3>
+      <p><strong>Weight: </strong> <%= @yarn.weight %></p>
+      <p><strong>Gauge: </strong> <%= @yarn.gauge %> sts</p>
+      <p><strong>Fiber: </strong> <% @yarn.materials.each do |material| %>
+      <%= material.percentage %>% <%= material.fiber_type%> 
+      <% end %>
+      
+      </p>
+      <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
+      <%# <p><strong>Location: </strong></p> %>
+    </div>
+
+    <div class="show-img">
+      <img src="<%= @yarn.image_url %>" />
+    </div>
+
+  </div>
+
+</div>

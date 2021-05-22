@@ -1,6 +1,8 @@
 <script src="https://kit.fontawesome.com/940a81dcf7.js" crossorigin="anonymous"></script>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dzuoumhdx/image/upload/v1621551052/knit_pool_iy433n.jpg);">
+<!--   The other image, in case we want that
+  https://res.cloudinary.com/dzuoumhdx/image/upload/v1620813457/swatch_img_netfll.jpg -->
   <div class="container">
     <h1><strong>YarnAlt</strong></h1>
     <p>Find yarn alternatives to your projects</p>
@@ -24,10 +26,11 @@
     <img src="<%= yarn.image_url %>" />
     <div class="card-product-infos">
       <h2><%= yarn.name %></h2>
-      <h3> <%=yarn.brand.name%></h3>
+
+      <h3><%= yarn.brand.name %></h3>
       <p><strong>Weight: </strong> <%= yarn.weight %></p>
       <p><strong>Gauge: </strong> <%= yarn.gauge %></p>
-      <p><strong>Fiber: </strong> <%= yarn.materials.name %></p>
+      <p><strong>Fiber: </strong> <%= yarn.materials[0].fiber_type %> <%= yarn.materials[0].percentage %>% </p>
       <p><strong>Needles: </strong> <%= yarn.needles %>mm</p>
       <p>More info...</p>
     </div>
@@ -35,4 +38,8 @@
   </div>
   <% end %>
 </div>
+
+
+
+
 

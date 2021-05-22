@@ -5,8 +5,24 @@ class Yarn < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
-    against: [ :name ],
-    using: {
-      tsearch: { prefix: true }
-    }
+  against: [ :name ],
+  using: {
+    tsearch: { prefix: true }
+  }
+  pg_search_scope :search_by_weight,
+  against: [ :weight ],
+  using: {
+    tsearch: { prefix: true }
+  }
+  pg_search_scope :search_by_needles,
+  against: [ :needles ],
+  using: {
+    tsearch: { prefix: true }
+  }
+  pg_search_scope :search_by_gauge,
+  against: [ :gauge ],
+  using: {
+    tsearch: { prefix: true }
+  }
+
 end

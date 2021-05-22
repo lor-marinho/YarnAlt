@@ -1,0 +1,27 @@
+.show-card {
+    display: inline-flex;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+    justify-content: space-evenly;
+    height: 500px;
+}
+
+.show-img {
+    max-height: 100%;
+}
+
+.show-card-infos {
+    font-size: 1.6rem;
+}
+
+.show-card-infos h2 {
+    font-weight: bold;
+}
+
+.show-card-infos p {
+    opacity: 0.7;
+
+}

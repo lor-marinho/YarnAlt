@@ -6,16 +6,17 @@
   <div class="card-product">
     <img src="<%= yarn.image_url %>" />
     <div class="card-product-infos">
-      <h2><%= yarn.name %></h2>
-      <h3>yarn.brand.name</h3>
+      <h2><%= link_to yarn.name,  yarn_path(yarn) %></h2>
+      <h3><%= yarn.brand.name %></h3>
       <p><strong>Weight: </strong> <%= yarn.weight %></p>
       <p><strong>Gauge: </strong> <%= yarn.gauge %></p>
-      <p><strong>Fiber: </strong> <%= yarn.materials.name %></p>
+      <p><strong>Fiber: </strong> <%= yarn.materials[0].fiber_type %> <%= yarn.materials[0].percentage %>% </p>
       <p><strong>Needles: </strong> <%= yarn.needles %>mm</p>
-      <p>More info...</p>
+<!--       <p>More info...</p> -->
     </div>
 
   </div>
   <% end %>
 
 </div>
+

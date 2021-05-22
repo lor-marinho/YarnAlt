@@ -1,5 +1,7 @@
 .grid-container {
-  margin: 0 auto;
+  margin: 10 10 10 10;
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
 .card-product {

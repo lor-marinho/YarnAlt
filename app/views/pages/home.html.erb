@@ -12,10 +12,7 @@
 
 <br>
 
-<div class="home-body">
-  <h2>This is the body of my homepage</h2>
-</div>
-
+<%= render 'shared/search' %>
 
 <% @yarns = Yarn.all %>
 <% @materials = Material.all %>
@@ -25,8 +22,9 @@
   <div class="card-product">
     <img src="<%= yarn.image_url %>" />
     <div class="card-product-infos">
-      <h2><%= yarn.name %></h2>
 
+<!--       <h2><%= yarn.name %></h2> -->
+      <h2><%= link_to yarn.name,  yarn_path(yarn) %></h2>
       <h3><%= yarn.brand.name %></h3>
       <p><strong>Weight: </strong> <%= yarn.weight %></p>
       <p><strong>Gauge: </strong> <%= yarn.gauge %></p>

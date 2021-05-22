@@ -1,6 +1,10 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+<div class="loginforms">
+
+  <br>
+  <h2>Sign up</h2>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -23,3 +27,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+
+

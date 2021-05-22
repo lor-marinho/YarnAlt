@@ -1,6 +1,6 @@
-<% @yarns = Yarn.all %>
-<% @materials = Material.all %>
-<% @brands = Brand.all %>
+
+<%= render 'shared/search' %>
+
 <div class="grid-container">
   <% @yarns.each do |yarn| %>
   <div class="card-product">
@@ -17,4 +17,5 @@
 
   </div>
   <% end %>
+
 </div>

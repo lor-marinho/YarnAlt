@@ -5,7 +5,7 @@
     class: "form-control",
     placeholder: "Find a yarn"
   %>
-  <%= select_tag(:option_id, options_for_select([['Name', 1], ['Weight', 2], ['Needles', 3], ['Gauge', 4]])) %>
+  <%= select_tag(:option_id, options_for_select([['Options', 1], ['Weight', 2], ['Needles', 3], ['Gauge', 4]]), class: "form-control") %>
 
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>

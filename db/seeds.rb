@@ -31,7 +31,7 @@ Brand.destroy_all
 
 yarn_list.each do |yarn_data|
 #   # AQUI VAI A LÓGICA PARA CRIAR O YARN E O QUE MAIS QUISEREM. O yarn_list é uma lista de hashs
-  
+
 #   # create yarn with materials
   brand_name = yarn_data["yarn_company"]["name"]
   brand = Brand.find_or_create_by(name: brand_name)
@@ -53,13 +53,13 @@ yarn_list.each do |yarn_data|
     material = Material.create_or_find_by(
       percentage: fiber['percentage'],
       fiber_type: fiber["fiber_type"]["name"]
-      
+
     )
     yarn.materials << material
     puts "OK: material #{material.id} - #{material.fiber_type} created"
   end
 
-  
+
   yarn.save!
   puts "OK: yarn #{yarn.id} - #{yarn.name} created"
 end

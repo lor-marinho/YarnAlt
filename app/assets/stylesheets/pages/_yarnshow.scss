@@ -6,19 +6,29 @@
     align-items: center;
     margin-top: 32px;
     justify-content: space-evenly;
-    height: 500px;
+    height: 300px;
 }
 
 .show-img {
-    max-height: 100%;
+    // max-height: 200px;
+    // width: 50%;
+    overflow: hidden;
+    height: 100%;
+    width: 45%;
+    object-fit: cover;
 }
 
 .show-card-infos {
-    font-size: 1.6rem;
+    font-size: 18px;
 }
 
 .show-card-infos h2 {
     font-weight: bold;
+    font-size: 24px;
+}
+
+.show-card-infos h3 {
+    font-size: 20px;
 }
 
 .show-card-infos p {

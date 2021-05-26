@@ -15,6 +15,7 @@ class YarnsController < ApplicationController
   end
 
   def show
+    @favourite = Favourite.new
     @yarn = Yarn.find(params[:id])
   end
 end

@@ -7,12 +7,13 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = Favourite.new(favourite_params)
-    @favourite.yarn = @yarn
+    @yarn = Yarn.find(params[:yarn_id])
+    @favourite = Favourite.new
     @favourite.user = current_user
+    @favourite.yarn = @yarn
 
     if @favourite.save
-      redirect_to favourite_path(@favourite)
+      redirect_to yarns_path
     else
       render :new
     end
@@ -26,7 +27,7 @@ class FavouritesController < ApplicationController
   private
 
   def favourite_params
-    params.require(:favourite).permit(:user_id, :yarn_id)
+    params.require(:favourite).permit(:yarn_id)
   end
 
 end

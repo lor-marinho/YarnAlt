@@ -64,6 +64,22 @@ yarn_list.each do |yarn_data|
   puts "OK: yarn #{yarn.id} - #{yarn.name} created"
 end
 
+#setting locations for brands
+garnstudio = Brand.where(name: "Garnstudio")
+garnstudio.update(location: "Europe")
+
+sandnesgarn = Brand.where(name: "Sandnes Garn")
+sandnesgarn.update(location: "Europe")
+
+filcolana = Brand.where(name: "Filcolana")
+filcolana.update(location: "Europe")
+
+circulo = Brand.where(name: "Circulo Yarns")
+circulo.update(location: "South America")
+
+pingouin = Brand.where(name: "Fios Pingouin")
+pingouin.update(location: "South America")
+
 # creating users
 User.destroy_all
 

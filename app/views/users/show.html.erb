@@ -1,0 +1,4 @@
+<% @fav = Favourite.where(user: current_user) %>
+<p><%= @fav.first.user.email %></p>
+<p><%= Favourite.first.user.email %></p>
+<p><%= Favourite.first.yarn.name %></p>

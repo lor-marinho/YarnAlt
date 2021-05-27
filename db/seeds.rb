@@ -37,7 +37,7 @@ yarn_list.each do |yarn_data|
   brand = Brand.find_or_create_by(name: brand_name)
   needles = yarn_data["min_needle_size"]["metric"] if yarn_data["min_needle_size"]
   weight = yarn_data['yarn_weight']['name'] if yarn_data['yarn_weight']
-  discontinued = false if yarn_data['discontinued'] == "false"
+  discontinued = yarn_data['discontinued']
   image_url = yarn_data['photos'][0]['medium_url'] if yarn_data['photos'][0]
   yarn = Yarn.new(
     name: yarn_data['name'],

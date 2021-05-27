@@ -17,5 +17,6 @@ class YarnsController < ApplicationController
   def show
     @favourite = Favourite.new
     @yarn = Yarn.find(params[:id])
+    @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id)
   end
 end

@@ -10,13 +10,18 @@
 </div>
 
 
-<br>
+
+<div class="instructions">
+  <p>Search by yarn <strong>name</strong>, <strong>brand</strong>, <strong>weight</strong>,
+    <strong>needles</strong> suggested or <strong>gauge</strong> and find the perfect match for your project.</p>
+</div>
 
 <%= render 'shared/search' %>
 
 <% @yarns = Yarn.all %>
 <% @materials = Material.all %>
 <% @brands = Brand.all %>
+
 
 
 <div class="grid-container">
@@ -27,6 +32,3 @@
 
 
 
-
-
-User.order("RANDOM()").limit(10)

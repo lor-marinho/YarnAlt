@@ -20,13 +20,24 @@
 
     <div class="show-img">
       <img src="<%= @yarn.image_url %>" />
+
+<!--     usar background image, colocar direto na div 21 -->
     </div>
 <!-- usar background image, colocar direto na div 21 -->
   </div>
 
   <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
 
-</div>
+
+
+ <h3>Equivalent Yarns</h3>
+ </div>
+  <div class="grid-container">
+  <% @yarn_equivalents.each do |yarn| %>
+    <%= render 'shared/yarn', yarn: yarn %>
+  <% end %>
+
+  </div>
 
 <h3>Equivalent Yarns</h3>
 

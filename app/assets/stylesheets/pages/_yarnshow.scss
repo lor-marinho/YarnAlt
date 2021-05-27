@@ -10,12 +10,11 @@
 }
 
 .show-img {
-    // max-height: 200px;
-    // width: 50%;
     overflow: hidden;
     height: 100%;
     width: 45%;
-    object-fit: cover;
+    align-items: center;
+
 }
 
 .show-card-infos {

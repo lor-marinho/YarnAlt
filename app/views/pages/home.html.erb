@@ -20,7 +20,7 @@
 
 
 <div class="grid-container">
-  <% @yarns.each do |yarn| %>
+  <% @yarns.limit(6).each do |yarn| %>
     <%= render 'shared/yarn', yarn: yarn %>
   <% end %>
 </div>
@@ -29,3 +29,4 @@
 
 
 
+User.order("RANDOM()").limit(10)

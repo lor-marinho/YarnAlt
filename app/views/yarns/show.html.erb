@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container d-flex justify-content-around mt-4">
 
   <div class="show-card">
 
@@ -23,10 +23,12 @@
 
     <div class="show-img">
       <img src="<%= @yarn.image_url %>" />
-
 <!--     usar background image, colocar direto na div 21 -->
     </div>
 <!-- usar background image, colocar direto na div 21 -->
+    <div class="fav-button">
+      <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
+    </div>
   </div>
   <% @flag = 0 %>
   <% @fav = Favourite.where(user: current_user) %>
@@ -40,24 +42,18 @@
     <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
   <% end %>
 
+  <div class="yarn-list">
+   <% @yarn_equivalents.each do |yarn| %>
 
-
-
- <h3>Equivalent Yarns</h3>
- </div>
-  <div class="grid-container">
-  <% @yarn_equivalents.each do |yarn| %>
-    <%= render 'shared/yarn', yarn: yarn %>
-  <% end %>
-
-  </div>
-
-<h3>Equivalent Yarns</h3>
-
-  <div class="grid-container">
-    <% @yarn_equivalents.each do |yarn| %>
       <%= render 'shared/yarn', yarn: yarn %>
     <% end %>
   </div>
+ </div>
+
+  
+  <%# <div class="grid-container">
+    <h3>Equivalent Yarns</h3>
+   
+  </div> %>
 
 

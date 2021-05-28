@@ -1,12 +1,13 @@
 .show-card {
-    display: inline-flex;
+    top: 40px;
+    position: sticky;
     background: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
-    margin-top: 32px;
     justify-content: space-evenly;
-    height: 300px;
+    height: 85vh;
+    width: 600px;
 }
 
 .show-img {

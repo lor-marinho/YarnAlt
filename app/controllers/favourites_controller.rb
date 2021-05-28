@@ -20,8 +20,9 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
+    @favourite = Favourite.find(params[:id])
     @favourite.destroy
-    redirect_to favourite_path
+    redirect_to user_path(current_user.id)
   end
 
   private

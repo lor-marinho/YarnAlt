@@ -28,8 +28,18 @@
     </div>
 <!-- usar background image, colocar direto na div 21 -->
   </div>
+  <% @flag = 0 %>
+  <% @fav = Favourite.where(user: current_user) %>
+  <% @fav.each do |fav| %>
+    <% @flag = 1 if(fav.yarn.id == @yarn.id)  %>
+  <% end %>
 
-  <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
+  <% if(@flag == 1) %>
+    <%= link_to 'Remover dos favoritos', favourite_path(@favourite[0].id), method: :delete, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+
 
 
 

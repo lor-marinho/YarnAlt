@@ -12,6 +12,8 @@ class YarnsController < ApplicationController
       @yarns = Yarn.search_by_needles(params[:query])
     elsif params[:query] && @option == '4'
       @yarns = Yarn.search_by_gauge(params[:query])
+    elsif params[:query] && @option == '5'
+      @yarns = Yarn.search_by_brand(params[:query])
     else
       @yarns = Yarn.all
     end
@@ -19,8 +21,6 @@ class YarnsController < ApplicationController
 
   def show
     @favourite = Favourite.where(user: current_user, yarn: params[:id])
-    p "favorito"
-    p @favourite
     @yarn = Yarn.find(params[:id])
     @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id)
   end

@@ -15,7 +15,9 @@ class YarnsController < ApplicationController
   end
 
   def show
-    @favourite = Favourite.new
+    @favourite = Favourite.where(user: current_user, yarn: params[:id])
+    p "favorito"
+    p @favourite
     @yarn = Yarn.find(params[:id])
   end
 end

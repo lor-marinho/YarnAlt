@@ -25,4 +25,11 @@ class Yarn < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  pg_search_scope :search_by_brand,
+    associated_against: {
+      brand: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+  }
 end

@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container d-flex justify-content-around mt-4">
 
   <div class="show-card">
 
@@ -16,37 +16,45 @@
       </p>
       <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
       <p><strong>Availability:  </strong><%= @yarn.brand.location %> </p>
+      <% if @yarn.discontinued == true %>
+        <p>*This yarn has been discontinued.</p>
+      <% end %>
     </div>
 
     <div class="show-img">
       <img src="<%= @yarn.image_url %>" />
-
 <!--     usar background image, colocar direto na div 21 -->
     </div>
 <!-- usar background image, colocar direto na div 21 -->
+    <div class="fav-button">
+      <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
+    </div>
   </div>
 
-  <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
-
- </div>
-
- <div class="showtitle">
-  <h3>Equivalent Yarns</h3>
-</div>
-
-  <div class="grid-container">
-  <% @yarn_equivalents.each do |yarn| %>
-    <%= render 'shared/yarn', yarn: yarn %>
+  <% @flag = 0 %>
+  <% @fav = Favourite.where(user: current_user) %>
+  <% @fav.each do |fav| %>
+    <% @flag = 1 if(fav.yarn.id == @yarn.id)  %>
   <% end %>
 
-  </div>
+  <% if(@flag == 1) %>
+    <%= link_to 'Remover dos favoritos', favourite_path(@favourite[0].id), method: :delete, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
+  <% end %>
 
-<h3>Equivalent Yarns</h3>
+  <div class="yarn-list">
+   <% @yarn_equivalents.each do |yarn| %>
 
-  <div class="grid-container">
-    <% @yarn_equivalents.each do |yarn| %>
       <%= render 'shared/yarn', yarn: yarn %>
     <% end %>
   </div>
+ </div>
+
+  
+  <%# <div class="grid-container">
+    <h3>Equivalent Yarns</h3>
+   
+  </div> %>
 
 

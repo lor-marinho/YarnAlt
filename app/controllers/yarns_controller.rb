@@ -1,4 +1,7 @@
 class YarnsController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
+
   def index
     @option = params[:option_id]
     if params[:query] && @option == '1'
@@ -9,13 +12,15 @@ class YarnsController < ApplicationController
       @yarns = Yarn.search_by_needles(params[:query])
     elsif params[:query] && @option == '4'
       @yarns = Yarn.search_by_gauge(params[:query])
+    elsif params[:query] && @option == '5'
+      @yarns = Yarn.search_by_brand(params[:query])
     else
       @yarns = Yarn.all
     end
   end
 
   def show
-    @favourite = Favourite.new
+    @favourite = Favourite.where(user: current_user, yarn: params[:id])
     @yarn = Yarn.find(params[:id])
     @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id)
   end

@@ -26,27 +26,27 @@
 <!--     usar background image, colocar direto na div 21 -->
     </div>
 <!-- usar background image, colocar direto na div 21 -->
+    <div class="fav-button">
+      <% @flag = 0 %>
+      <% @fav = Favourite.where(user: current_user) %>
+      <% @fav.each do |fav| %>
+        <% @flag = 1 if(fav.yarn.id == @yarn.id)  %>
+      <% end %>
 
-=======
-
-  <% @flag = 0 %>
-  <% @fav = Favourite.where(user: current_user) %>
-  <% @fav.each do |fav| %>
-    <% @flag = 1 if(fav.yarn.id == @yarn.id)  %>
-  <% end %>
-
-  <% if(@flag == 1) %>
-    <%= link_to 'Remover dos favoritos', favourite_path(@favourite[0].id), method: :delete, class: 'btn btn-primary' %>
-  <% else %>
-    <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-
+      <% if(@flag == 1) %>
+        <%= link_to 'Remover dos favoritos', favourite_path(@favourite[0].id), method: :delete, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
   <div class="yarn-list">
    <% @yarn_equivalents.each do |yarn| %>
 
       <%= render 'shared/yarn', yarn: yarn %>
     <% end %>
   </div>
+
  </div>
 
   

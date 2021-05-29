@@ -2,7 +2,7 @@
 <div class="card-product">
     <img src="<%= yarn.image_url.present? ? yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
     <div class="card-product-infos">
-      <h2><%= link_to yarn.name,  yarn_path(yarn) %></h2>
+      <h2><%= link_to truncate(yarn.name, :length => 30),  yarn_path(yarn) %></h2>
       <h3><%= yarn.brand.name %></h3>
       <p><strong>Weight: </strong> <%= yarn.weight %></p>
       <p><strong>Gauge: </strong> <%= yarn.gauge %></p>
@@ -14,3 +14,5 @@
     </div>
 
   </div>
+
+

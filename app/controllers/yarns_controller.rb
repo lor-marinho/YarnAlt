@@ -22,6 +22,6 @@ class YarnsController < ApplicationController
   def show
     @favourite = Favourite.where(user: current_user, yarn: params[:id])
     @yarn = Yarn.find(params[:id])
-    @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id)
+    @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id).order("RANDOM()")
   end
 end

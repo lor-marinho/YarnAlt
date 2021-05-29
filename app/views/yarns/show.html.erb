@@ -30,6 +30,7 @@
       <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
     </div>
   </div>
+
   <% @flag = 0 %>
   <% @fav = Favourite.where(user: current_user) %>
   <% @fav.each do |fav| %>

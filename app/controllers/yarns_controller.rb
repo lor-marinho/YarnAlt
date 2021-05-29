@@ -15,7 +15,7 @@ class YarnsController < ApplicationController
     elsif params[:query] && @option == '5'
       @yarns = Yarn.search_by_brand(params[:query])
     else
-      @yarns = Yarn.all
+      @yarns = Yarn.all.order("RANDOM()")
     end
   end
 

@@ -23,5 +23,12 @@ class YarnsController < ApplicationController
     @favourite = Favourite.where(user: current_user, yarn: params[:id])
     @yarn = Yarn.find(params[:id])
     @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id).order("RANDOM()")
+    # @yarn_equiv_materials = Yarn.where(material: @yarn.materials).where.not(id: @yarn.id).order("RANDOM()")
   end
 end
+
+
+
+
+
+

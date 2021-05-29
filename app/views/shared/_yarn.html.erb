@@ -10,9 +10,21 @@
       <p><strong>Needles: </strong> <%= yarn.needles %>mm</p>
       <div class="moreinfo" >
         <%= link_to "More info", yarn_path(yarn) %>
+        <div class="fav-button">
+        <% @fav = current_user.favourites.where(yarn_id: yarn.id) %>
+       <% unless @fav == [] %>
+          <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to yarn_favourites_path(yarn), method: :post, class: 'gray-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
+
       </div>
     </div>
 
   </div>
-
 

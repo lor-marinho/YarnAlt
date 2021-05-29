@@ -3,47 +3,40 @@
 
   <div class="show-card">
 
-    <div class="show-card-infos">
-      <h2><%= @yarn.name %></h2>
-
-      <h3><%= @yarn.brand.name %></h3>
-      <p><strong>Weight: </strong> <%= @yarn.weight %></p>
-      <p><strong>Gauge: </strong> <%= @yarn.gauge %> sts</p>
-      <p><strong>Fiber: </strong> <% @yarn.materials.each do |material| %>
-      <%= material.percentage %>% <%= material.fiber_type%>
-      <% end %>
-
-      </p>
-      <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
-      <p><strong>Availability:  </strong><%= @yarn.brand.location %> </p>
-      <% if @yarn.discontinued == true %>
-        <p>*This yarn has been discontinued.</p>
-      <% end %>
-    </div>
-
     <div class="show-img">
       <img src="<%= @yarn.image_url.present? ? @yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
     </div>
+    <div class="show-info-fav">
+      <div class="show-card-infos">
+        <h2><%= @yarn.name %></h2>
 
-
-    <div class="fav-button">
-      <% @flag = 0 %>
-      <% @fav = Favourite.where(user: current_user) %>
-      <% @fav.each do |fav| %>
-        <% @flag = 1 if(fav.yarn.id == @yarn.id)  %>
-      <% end %>
-
-      <% if(@flag == 1) %>
-        <%= link_to favourite_path(@favourite[0].id), method: :delete, class: 'red-heart' do %>
-          <i class="fas fa-heart"></i>
+        <h3><%= @yarn.brand.name %></h3>
+        <p><strong>Weight: </strong> <%= @yarn.weight %></p>
+        <p><strong>Gauge: </strong> <%= @yarn.gauge %> sts</p>
+        <p><strong>Fiber: </strong> <% @yarn.materials.each do |material| %>
+        <%= material.percentage %>% <%= material.fiber_type%>
         <% end %>
-      <% else %>
-        <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
-          <i class="fas fa-heart"></i>
+
+        </p>
+        <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
+        <p><strong>Availability:  </strong><%= @yarn.brand.location %> </p>
+        <% if @yarn.discontinued == true %>
+          <p>*This yarn has been discontinued.</p>
         <% end %>
-      <% end %>
+      </div>
 
-
+      <div class="fav-button">
+        <% @fav = current_user.favourites.where(yarn_id: @yarn.id) %>
+       <% unless @fav == [] %>
+          <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
 
     </div>
 

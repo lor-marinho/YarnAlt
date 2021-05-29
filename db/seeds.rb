@@ -23,6 +23,7 @@ end
 YARN_BRANDS = %w[garnstudio fios%20pingouin filcolana circulo sandnesgarn].freeze
 yarn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
 # ap yarn_list.first
+Favourite.destroy_all
 YarnMaterial.destroy_all
 Yarn.destroy_all
 Brand.destroy_all

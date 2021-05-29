@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
   resources :favourites, only: :destroy
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end

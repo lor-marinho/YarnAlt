@@ -22,7 +22,7 @@
     </div>
 
     <div class="show-img">
-      <img src="<%= @yarn.image_url %>" />
+      <img src="<%= @yarn.image_url.present? ? @yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
     </div>
 
 
@@ -50,18 +50,16 @@
 
   </div>
   <div class="yarn-list">
-   <% @yarn_equivalents.each do |yarn| %>
 
+    <div class="showtitle">
+      <h3>Equivalent Yarns</h3>
+   </div>
+
+   <% @yarn_equivalents.each do |yarn| %>
       <%= render 'shared/yarn', yarn: yarn %>
     <% end %>
+
   </div>
 
  </div>
-
-  
-  <%# <div class="grid-container">
-    <h3>Equivalent Yarns</h3>
-   
-  </div> %>
-
 

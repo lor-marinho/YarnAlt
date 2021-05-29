@@ -15,7 +15,7 @@ class YarnsController < ApplicationController
     elsif params[:query] && @option == '5'
       @yarns = Yarn.search_by_brand(params[:query])
     else
-      @yarns = Yarn.all
+      @yarns = Yarn.all.order("RANDOM()")
     end
   end
 
@@ -23,6 +23,13 @@ class YarnsController < ApplicationController
     @favourite = Favourite.where(user: current_user, yarn: params[:id])
     @yarn = Yarn.find(params[:id])
     @chatroom = Chatroom.where(yarn: @yarn)
-    @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id)
+    @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id).order("RANDOM()")
+
   end
 end
+
+
+
+
+
+

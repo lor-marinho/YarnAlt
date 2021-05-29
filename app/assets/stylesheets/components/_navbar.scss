@@ -1,4 +1,6 @@
+
 .navbar-lewagon {
+  align-items: center;
   justify-content: space-between;
   background-color: #ffb6b9;
 }
@@ -16,4 +18,30 @@
   font-size: 32px;
   color: beige;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.nav-item {
+  vertical-align: center;
+  font-size: 12px;
+  font-family: 'Prompt', sans-serif;
+  opacity: .8;
+  margin-right: 5px;
+  color: black;
+  align-items: center;
+}
+
+
+.nav-menu {
+  width: 35px;
+}
+
+.logged-nav {
+  margin-top: 10px;
+  font-size: 12px;
+  font-family: 'Prompt', sans-serif;
+  opacity: .7;
+  margin-right: 15px;
+  color: black;
+  align-items: center;
+  text-shadow: 1px 1px 3px white;
 }

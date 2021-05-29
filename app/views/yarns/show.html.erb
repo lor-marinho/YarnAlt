@@ -2,60 +2,62 @@
 
   <div class="show-card">
 
-    <div class="show-card-infos">
-      <h2><%= @yarn.name %></h2>
-
-      <h3><%= @yarn.brand.name %></h3>
-      <p><strong>Weight: </strong> <%= @yarn.weight %></p>
-      <p><strong>Gauge: </strong> <%= @yarn.gauge %> sts</p>
-      <p><strong>Fiber: </strong> <% @yarn.materials.each do |material| %>
-      <%= material.percentage %>% <%= material.fiber_type%>
-      <% end %>
-
-      </p>
-      <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
-      <p><strong>Availability:  </strong><%= @yarn.brand.location %> </p>
-      <% if @yarn.discontinued == true %>
-        <p>*This yarn has been discontinued.</p>
-      <% end %>
-    </div>
-
     <div class="show-img">
-      <img src="<%= @yarn.image_url %>" />
-<!--     usar background image, colocar direto na div 21 -->
+      <img src="<%= @yarn.image_url.present? ? @yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
     </div>
-<!-- usar background image, colocar direto na div 21 -->
+
+    <div class="show-info-fav">
+      <div class="show-card-infos">
+        <h2><%= @yarn.name %></h2>
+
+        <h3><%= @yarn.brand.name %></h3>
+        <p><strong>Weight: </strong> <%= @yarn.weight %></p>
+        <p><strong>Gauge: </strong> <%= @yarn.gauge %> sts</p>
+        <p><strong>Fiber: </strong> <% @yarn.materials.each do |material| %>
+        <%= material.percentage %>% <%= material.fiber_type%>
+        <% end %>
+
+        </p>
+        <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
+        <p><strong>Availability:  </strong><%= @yarn.brand.location %> </p>
+        <% if @yarn.discontinued == true %>
+          <p>*This yarn has been discontinued.</p>
+        <% end %>
+      </div>
+
+      <div class="fav-button">
+        <% @fav = current_user.favourites.where(yarn_id: @yarn.id) %>
+       <% unless @fav == [] %>
+          <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
+    
+      <% if @chatroom[0].nil? %>
+        <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
+      <% end %>
+    
+    </div>
+
   </div>
-
-  <% if @chatroom[0].nil? %>
-    <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
-  <% else %>
-    <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
-  <% end %>
-
-  <% @flag = 0 %>
-  <% @fav = Favourite.where(user: current_user) %>
-  <% @fav.each do |fav| %>
-    <% @flag = 1 if(fav.yarn.id == @yarn.id)  %>
-  <% end %>
-
-  <% if(@flag == 1) %>
-    <%= link_to 'Remover dos favoritos', favourite_path(@favourite[0].id), method: :delete, class: 'btn btn-primary' %>
-  <% else %>
-    <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-
   <div class="yarn-list">
-   <% @yarn_equivalents.each do |yarn| %>
 
+    <div class="showtitle">
+      <h3>Equivalent Yarns</h3>
+   </div>
+
+   <% @yarn_equivalents.each do |yarn| %>
       <%= render 'shared/yarn', yarn: yarn %>
     <% end %>
+
   </div>
+
  </div>
-
-  <%# <div class="grid-container">
-    <h3>Equivalent Yarns</h3>
-   
-  </div> %>
-
 

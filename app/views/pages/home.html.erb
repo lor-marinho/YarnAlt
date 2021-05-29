@@ -18,11 +18,6 @@
 
 <%= render 'shared/search' %>
 
-<% @yarns = Yarn.all.order("RANDOM()") %>
-<% @materials = Material.all %>
-<% @brands = Brand.all %>
-
-
 
 <div class="grid-container">
   <% @yarns.limit(6).each do |yarn| %>

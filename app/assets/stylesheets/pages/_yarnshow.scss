@@ -12,9 +12,10 @@
 
 .show-img {
     overflow: hidden;
-    height: 100%;
+    height: 60%;
     width: 45%;
     align-items: center;
+    object-fit: cover;
 }
 
 .show-card-infos {

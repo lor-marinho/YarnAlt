@@ -23,10 +23,9 @@
 
     <div class="show-img">
       <img src="<%= @yarn.image_url.present? ? @yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
-
-<!--     usar background image, colocar direto na div 21 -->
     </div>
-<!-- usar background image, colocar direto na div 21 -->
+
+
     <div class="fav-button">
       <% @flag = 0 %>
       <% @fav = Favourite.where(user: current_user) %>
@@ -35,11 +34,20 @@
       <% end %>
 
       <% if(@flag == 1) %>
-        <%= link_to 'Remover dos favoritos', favourite_path(@favourite[0].id), method: :delete, class: 'btn btn-primary' %>
+        <%= link_to favourite_path(@favourite[0].id), method: :delete, class: 'red-heart' do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
       <% else %>
-        <%= link_to 'Adicionar aos favoritos', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-primary' %>
+        <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
       <% end %>
+
+
+
     </div>
+
+
   </div>
   <div class="yarn-list">
 

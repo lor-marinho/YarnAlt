@@ -1,5 +1,9 @@
+
+
+
 <% if(@user.id == current_user.id) %>
-  <h1>My favourites yarns</h1>
+  <h2>My favourites yarns</h2>
+
   <% @fav = Favourite.where(user: current_user) %>
   <% @fav.each do |fav| %>
     <%= render 'shared/yarn', yarn: fav.yarn %>

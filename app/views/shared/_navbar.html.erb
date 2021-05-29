@@ -15,12 +15,11 @@
      <!--    <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>
         </li> -->
-        <li class="nav-item"> You are logged as <%= current_user.email %> </li>
+        <div class="logged-nav">
+          <li class="nav-item"> You are logged as <%= current_user.email %> </li>
+        </div>
         <li class="nav-item dropdown">
-          <i class="fa-solid fa-bars dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </i>
-
-
+          <%= image_tag "https://res.cloudinary.com/dzuoumhdx/image/upload/v1622306054/menu_hpdstu.png", class: "nav-menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My favourites", user_path(current_user.id), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

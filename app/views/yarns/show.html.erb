@@ -26,10 +26,8 @@
 <!--     usar background image, colocar direto na div 21 -->
     </div>
 <!-- usar background image, colocar direto na div 21 -->
-    <div class="fav-button">
-      <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
-    </div>
-  </div>
+
+=======
 
   <% @flag = 0 %>
   <% @fav = Favourite.where(user: current_user) %>

@@ -13,7 +13,7 @@ class FavouritesController < ApplicationController
     @favourite.yarn = @yarn
 
     if @favourite.save
-      redirect_to yarns_path
+      redirect_to yarn_path(@yarn)
     else
       render :new
     end
@@ -21,8 +21,9 @@ class FavouritesController < ApplicationController
 
   def destroy
     @favourite = Favourite.find(params[:id])
+    @yarn = @favourite.yarn
     @favourite.destroy
-    redirect_to user_path(current_user.id)
+    redirect_to yarn_path(@yarn)
   end
 
   private

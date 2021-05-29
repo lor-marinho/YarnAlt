@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_141901) do
+ActiveRecord::Schema.define(version: 2021_05_29_165622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_05_29_141901) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "yarn_id"
+    t.index ["yarn_id"], name: "index_chatrooms_on_yarn_id"
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_141901) do
     t.index ["brand_id"], name: "index_yarns_on_brand_id"
   end
 
+  add_foreign_key "chatrooms", "yarns"
   add_foreign_key "favourites", "users"
   add_foreign_key "favourites", "yarns"
   add_foreign_key "messages", "chatrooms"

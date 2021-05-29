@@ -22,6 +22,7 @@ class YarnsController < ApplicationController
   def show
     @favourite = Favourite.where(user: current_user, yarn: params[:id])
     @yarn = Yarn.find(params[:id])
+    @chatroom = Chatroom.where(yarn: @yarn)
     @yarn_equivalents = Yarn.where(gauge: @yarn.gauge).where.not(id: @yarn.id)
   end
 end

@@ -1,4 +1,3 @@
-
 <div class="container d-flex justify-content-around mt-4">
 
   <div class="show-card">
@@ -6,6 +5,7 @@
     <div class="show-img">
       <img src="<%= @yarn.image_url.present? ? @yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
     </div>
+
     <div class="show-info-fav">
       <div class="show-card-infos">
         <h2><%= @yarn.name %></h2>
@@ -37,9 +37,14 @@
           <% end %>
         <% end %>
       </div>
-
+    
+      <% if @chatroom[0].nil? %>
+        <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
+      <% end %>
+    
     </div>
-
 
   </div>
   <div class="yarn-list">

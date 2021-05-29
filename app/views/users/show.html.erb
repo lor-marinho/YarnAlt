@@ -1,13 +1,17 @@
 
+  <div class="showtitle">
+    <h3>My favourites yarns</h3>
+  </div>
 
-
-<% if(@user.id == current_user.id) %>
-  <h2>My favourites yarns</h2>
-
-  <% @fav = Favourite.where(user: current_user) %>
-  <% @fav.each do |fav| %>
-    <%= render 'shared/yarn', yarn: fav.yarn %>
+<div class="grid-container">
+  <% if(@user.id == current_user.id) %>
+    <% @fav = Favourite.where(user: current_user) %>
+    <% @fav.each do |fav| %>
+      <%= render 'shared/yarn', yarn: fav.yarn %>
   <% end %>
-<% else %>
-  <h1>Acesso Negado!</h1>
-<% end %>
+  <% else %>
+    <h1>Cannot access!</h1>
+  <% end %>
+</div>
+
+

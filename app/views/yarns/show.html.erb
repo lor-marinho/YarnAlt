@@ -28,10 +28,12 @@
 
   <%= link_to 'Favoritar', yarn_favourites_path(@yarn), method: :post, class: 'btn btn-flat' %>
 
-
-
- <h3>Equivalent Yarns</h3>
  </div>
+
+ <div class="showtitle">
+  <h3>Equivalent Yarns</h3>
+</div>
+
   <div class="grid-container">
   <% @yarn_equivalents.each do |yarn| %>
     <%= render 'shared/yarn', yarn: yarn %>

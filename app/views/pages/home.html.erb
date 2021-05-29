@@ -18,7 +18,7 @@
 
 <%= render 'shared/search' %>
 
-<% @yarns = Yarn.all %>
+<% @yarns = Yarn.all.order("RANDOM()") %>
 <% @materials = Material.all %>
 <% @brands = Brand.all %>
 

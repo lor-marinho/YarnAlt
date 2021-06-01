@@ -26,7 +26,13 @@
       </div>
 
       <div class="fav-button">
-        <% @fav = current_user.favourites.where(yarn_id: @yarn.id) %>
+
+        <% if current_user %>
+          <% @fav = current_user.favourites.where(yarn_id: @yarn.id) %>
+        <% else %>
+          <% @fav = [] %>
+        <% end %>
+
        <% unless @fav == [] %>
           <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
             <i class="fas fa-heart"></i>

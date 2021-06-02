@@ -11,7 +11,7 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 400px;
   border-radius: 10px;
 }
@@ -23,13 +23,13 @@
 }
 
 .card-product h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product p {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -38,10 +38,11 @@
 
 .card-product .card-product-infos {
   padding: 10px;
+  position: relative;
 }
 
 .card-product-infos h3 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   margin: 0;
 }

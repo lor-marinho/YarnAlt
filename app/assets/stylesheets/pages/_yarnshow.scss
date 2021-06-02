@@ -53,3 +53,13 @@
     position: relative;
     top: 80px;
 }
+
+.fav-chat-buttons{
+  display: flex;
+  flex-direction: column;
+}
+
+.fav-button{
+  text-align: center;
+  margin-bottom: 20px;
+}

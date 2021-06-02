@@ -25,30 +25,34 @@
         <% end %>
       </div>
 
-      <div class="fav-button">
+      <div class="fav-chat-buttons">
+        <div class="fav-button">
 
-        <% if current_user %>
-          <% @fav = current_user.favourites.where(yarn_id: @yarn.id) %>
-        <% else %>
-          <% @fav = [] %>
-        <% end %>
+          <% if current_user %>
+            <% @fav = current_user.favourites.where(yarn_id: @yarn.id) %>
+          <% else %>
+            <% @fav = [] %>
+          <% end %>
 
-       <% unless @fav == [] %>
-          <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
-            <i class="fas fa-heart"></i>
+         <% unless @fav == [] %>
+            <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+          <% else %>
+            <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
-            <i class="fas fa-heart"></i>
+        </div>
+
+        <div class="chat-button">
+          <% if @chatroom[0].nil? %>
+            <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    
-      <% if @chatroom[0].nil? %>
-        <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
-      <% else %>
-        <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
-      <% end %>
     
     </div>
 

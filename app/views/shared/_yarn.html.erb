@@ -1,34 +1,40 @@
 
 <div class="card-product">
+
     <img src="<%= yarn.image_url.present? ? yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
+
     <div class="card-product-infos">
-      <h2><%= link_to truncate(yarn.name, :length => 25),  yarn_path(yarn) %></h2>
+      <h2><%= link_to truncate(yarn.name, :length => 20),  yarn_path(yarn) %></h2>
       <h3><%= yarn.brand.name %></h3>
       <p><strong>Weight: </strong> <%= yarn.weight.present? ? yarn.weight : "Unknown" %></p>
       <p><strong>Gauge: </strong> <%= yarn.gauge.present? ? yarn.gauge : "Unknown" %></p>
       <p><strong>Fiber: </strong> <%= yarn.materials[0].fiber_type %> <%= yarn.materials[0].percentage %>% </p>
       <p><strong>Needles: </strong> <%= yarn.needles %>mm</p>
+
       <div class="moreinfo" >
         <%= link_to "More info", yarn_path(yarn) %>
-        <div class="fav-button">
-        <% if current_user %>
-          <% @fav = current_user.favourites.where(yarn_id: yarn.id) %>
-        <% else %>
-          <% @fav = [] %>
-        <% end %>
-       <% unless @fav == [] %>
-          <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
-        <% else %>
-          <%= link_to yarn_favourites_path(yarn), method: :post, class: 'gray-heart' do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
-        <% end %>
       </div>
 
-      </div>
+
     </div>
 
-  </div>
+      <div class="fav-button">
+          <% if current_user %>
+            <% @fav = current_user.favourites.where(yarn_id: yarn.id) %>
+          <% else %>
+            <% @fav = [] %>
+          <% end %>
+          <% unless @fav == [] %>
+            <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+              <i class="fas fa-heart"></i>
+          <% end %>
+          <% else %>
+            <%= link_to yarn_favourites_path(yarn), method: :post, class: 'gray-heart' do %>
+              <i class="fas fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+
+</div>
 

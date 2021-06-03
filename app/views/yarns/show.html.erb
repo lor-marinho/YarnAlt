@@ -49,9 +49,9 @@
 
         <div class="chat-button">
           <% if @chatroom[0].nil? %>
-            <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
+            <%= link_to 'Create Help Chat', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
           <% else %>
-            <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
+            <%= link_to 'Go to Help Chat', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>

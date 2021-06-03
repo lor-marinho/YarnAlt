@@ -35,11 +35,13 @@
           <% end %>
 
          <% unless @fav == [] %>
-            <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+            <%= link_to favourite_path(@fav[0].id), method: :delete, :title => "Remove this product to favourites",
+            class: 'red-heart' do %>
               <i class="fas fa-heart"></i>
             <% end %>
           <% else %>
-            <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
+            <%= link_to yarn_favourites_path(@yarn), method: :post, :title => "Add this product to favourites",
+             class: 'gray-heart' do %>
               <i class="fas fa-heart"></i>
             <% end %>
           <% end %>
@@ -53,10 +55,9 @@
           <% end %>
         </div>
       </div>
-    
     </div>
-
   </div>
+
   <div class="yarn-list">
 
     <div class="showtitle">

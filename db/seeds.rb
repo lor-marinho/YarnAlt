@@ -91,12 +91,14 @@ puts 'Creating user...'
 johndoe = User.new(
   email: "john@doe.com",
   password: "123456",
+  username: "johnny"
   )
 johndoe.save!
 
 maryjane = User.new(
   email: "mary@jane.com",
   password: "123456",
+  username: "marjo"
   )
 maryjane.save!
 

@@ -1,4 +1,4 @@
-<h1 id="chatroom-h1">Welcome to the chatroom for <%= @yarn.name %></h1>
+<h1 id="chatroom-h1">Help Chat for <%= @yarn.name %></h1>
 <div class="card-chatroom">
   <%= render 'shared/yarn', yarn: @yarn %>
 </div>
@@ -18,7 +18,7 @@
   <%= simple_form_for [@yarn, @chatroom, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Write your message",
   :input_html => {:style=> 'width: 600px'}%>
-    <%= f.submit "Send Message", class: 'btn btn-primary' %>
+    <%= f.submit "Post Message", class: 'btn btn-primary' %>
   <% end %>
 </div>
 

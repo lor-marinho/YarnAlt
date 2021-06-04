@@ -13,17 +13,18 @@ class FavouritesController < ApplicationController
     @favourite.yarn = @yarn
 
     if @favourite.save
-      redirect_to yarn_path(@yarn)
+      # redirect_to yarn_path(@yarn)
+      render json: :ok
     else
-      render :new
+      # render :new
     end
   end
 
   def destroy
-    @favourite = Favourite.find(params[:id])
-    @yarn = @favourite.yarn
+    @favourite = current_user.favourites.find_by(yarn_id: params[:id])
     @favourite.destroy
-    redirect_to yarn_path(@yarn)
+    
+    render json: :ok
   end
 
   private

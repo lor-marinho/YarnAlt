@@ -31,5 +31,17 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  const redHeart = document.getElementById("red-heart")
+  const grayHeart = document.getElementById("gray-heart")
+  grayHeart.addEventListener("ajax:success", (event) => {
+    redHeart.style.display = "block"
+    grayHeart.style.display = "none"
+  })
+  redHeart.addEventListener("ajax:success", (event) => {
+    grayHeart.style.display = "block"
+    redHeart.style.display = "none"
+  })
 });
+
 initChatroomCable();
+

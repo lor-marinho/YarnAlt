@@ -33,15 +33,27 @@
           <% @fav = [] %>
         <% end %>
 
-       <% unless @fav == [] %>
-          <%= link_to favourite_path(@fav[0].id), method: :delete, class: 'red-heart' do %>
+       <%# <% unless @fav == [] %> 
+       <% if @fav == [] %>
+          <%= link_to favourites_yarn_path(@yarn), method: :delete, class: 'red-heart', id: 'red-heart', remote: true, style: 'display: none' do %>
             <i class="fas fa-heart"></i>
           <% end %>
+          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart', id: 'gray-heart', remote: true do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        
         <% else %>
-          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart' do %>
+
+          <%= link_to favourites_yarn_path(@yarn), method: :delete, class: 'red-heart', id: 'red-heart', remote: true do %>
             <i class="fas fa-heart"></i>
           <% end %>
+          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart', id: 'gray-heart', remote: true, style: 'display: none' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+
         <% end %>
+
+        <%# <% end %> 
       </div>
     
       <% if @chatroom[0].nil? %>

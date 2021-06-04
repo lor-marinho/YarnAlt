@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module YarnAlt
   class Application < Rails::Application
+    config.time_zone = 'Brasilia'
+    config.time_zone = 'America/Sao_Paulo'
+    config.active_record.time_zone_aware_attributes = false
+
     config.generators do |generate|
       generate.assets false
       generate.helper false

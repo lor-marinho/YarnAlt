@@ -1,13 +1,16 @@
 
 <div class="card-product">
+
     <img src="<%= yarn.image_url.present? ? yarn.image_url : 'https://res.cloudinary.com/dzuoumhdx/image/upload/v1621985362/yarn_xlqcff.jpg' %>" />
+
     <div class="card-product-infos">
-      <h2><%= link_to truncate(yarn.name, :length => 25),  yarn_path(yarn) %></h2>
+      <h2><%= link_to truncate(yarn.name, :length => 20),  yarn_path(yarn) %></h2>
       <h3><%= yarn.brand.name %></h3>
       <p><strong>Weight: </strong> <%= yarn.weight.present? ? yarn.weight : "Unknown" %></p>
       <p><strong>Gauge: </strong> <%= yarn.gauge.present? ? yarn.gauge : "Unknown" %></p>
       <p><strong>Fiber: </strong> <%= yarn.materials[0].fiber_type %> <%= yarn.materials[0].percentage %>% </p>
       <p><strong>Needles: </strong> <%= yarn.needles %>mm</p>
+
       <div class="moreinfo" >
         <%= link_to "More info", yarn_path(yarn) %>
         <div class="fav-button">
@@ -30,6 +33,7 @@
 
           <%= link_to favourites_yarn_path(yarn), method: :delete, class: 'red-heart', id: 'red-heart', remote: true do %>
             <i class="fas fa-heart"></i>
+
           <% end %>
           <%= link_to yarn_favourites_path(yarn), method: :post, class: 'gray-heart', id: 'gray-heart', remote: true, style: 'display: none' do %>
             <i class="fas fa-heart"></i>
@@ -38,8 +42,6 @@
         <% end %>
       </div>
 
-      </div>
-    </div>
 
-  </div>
+</div>
 

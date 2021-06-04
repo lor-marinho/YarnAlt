@@ -2,17 +2,13 @@
 <div class="card-chatroom">
   <%= render 'shared/yarn', yarn: @yarn %>
 </div>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.username %></span>
-        <% date_message = message.created_at - 3*60*60 %>
-        <small><%= date_message.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p class="message-content"><%= message.content %></p>
-    </div>
-  <% end %>
+<div id="messages">
+  <div id="messages-list" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render 'shared/message', message: message %>
+    <% end %>
+  </div>
+
 
   <div class="chat-send-message">
   <%= simple_form_for [@yarn, @chatroom, @message ], remote: true do |f| %>
@@ -20,7 +16,7 @@
   :input_html => {:style=> 'width: 600px'}%>
     <%= f.submit "Post Message", class: 'btn btn-primary' %>
   <% end %>
-</div>
+  </div>
 
 </div>
 

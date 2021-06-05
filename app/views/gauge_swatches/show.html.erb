@@ -1,0 +1,9 @@
+<img src="<%= @gauge.image_url %>" />
+
+<p>Gauge: <%= @gauge.gauge %></p>
+<p>Needles: <%= @gauge.needles %></p>
+
+<% @gauge.yarns.each do |t| %>
+<p><%= t.name %></p>
+<p><%= t.weight %></p>
+<% end %>

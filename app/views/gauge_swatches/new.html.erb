@@ -1,0 +1,20 @@
+
+<%= form_for(@gauge_swatch) do |f| %>
+  <%= f.label :image %>
+  <%= f.text_field :image_url %>
+  <%= f.label :gauge %>
+  <%= f.text_field :gauge %>
+  <%= f.label :needles %>
+  <%= f.text_field :needles %>
+
+  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+  <%= select_tag 'Yarn', options_for_select(options), {:include_blank => 'Select an yarn'} %>
+  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+  <%= select_tag 'Yarn2', options_for_select(options), {:include_blank => 'Select another yarn'} %>
+  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+  <%= select_tag 'Yarn3', options_for_select(options), {:include_blank => 'Select another yarn'} %>
+
+  <%= f.submit %>
+<% end %>
+
+

@@ -53,6 +53,7 @@ body {
 
 .card-product {
   margin-bottom: 23px;
+  position: relative;
 }
 
 .grid-container {
@@ -77,7 +78,7 @@ body {
 .fav-button {
   position: absolute;
 //   text-align:center;
-//   top: 10px;
-//   right: 10px;
+  bottom: 10px;
+  right: 10px;
 //   display:block;
 }

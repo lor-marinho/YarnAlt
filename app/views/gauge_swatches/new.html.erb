@@ -3,7 +3,7 @@
 <div class="form-gauge-swatch">
 <%= form_for(@gauge_swatch) do |f| %>
   <p class="label-gs"><%= f.label "Image:" %></p>
-  <p class="field-gs"><%= f.text_field :image_url%></p>
+  <p><%= f.file_field :image_url %></p>
   <p class="label-gs"><%= f.label "Gauge:" %></p>
   <p class="field-gs"><%= f.text_field :gauge %></p>
   <p class="label-gs"> <%= f.label "Needles:" %></p>

@@ -3,6 +3,7 @@
   <%= render 'shared/yarn', yarn: @yarn %>
 </div>
 <div id="messages">
+
   <div id="messages-list" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
       <%= render 'shared/message', message: message %>

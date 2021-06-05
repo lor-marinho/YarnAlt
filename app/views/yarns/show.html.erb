@@ -21,7 +21,7 @@
         <p><strong>Needles: </strong> <%= @yarn.needles %>mm</p>
         <p><strong>Availability:  </strong><%= @yarn.brand.location %> </p>
         <% if @yarn.discontinued == true %>
-          <p>*This yarn has been discontinued.</p>
+          <p>*This yarn has been discontinued by <%= @yarn.brand.name %>.</p>
         <% end %>
       </div>
 

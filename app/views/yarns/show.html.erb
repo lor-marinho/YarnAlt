@@ -34,24 +34,35 @@
             <% @fav = [] %>
           <% end %>
 
-         <% unless @fav == [] %>
-            <%= link_to favourite_path(@fav[0].id), method: :delete, :title => "Remove this product to favourites",
-            class: 'red-heart' do %>
-              <i class="fas fa-heart"></i>
-            <% end %>
-          <% else %>
-            <%= link_to yarn_favourites_path(@yarn), method: :post, :title => "Add this product to favourites",
-             class: 'gray-heart' do %>
-              <i class="fas fa-heart"></i>
-            <% end %>
+       <%# <% unless @fav == [] %> 
+       <% if @fav == [] %>
+          <%= link_to favourites_yarn_path(@yarn), method: :delete, class: 'red-heart', id: 'red-heart', remote: true, style: 'display: none' do %>
+            <i class="fas fa-heart"></i>
           <% end %>
+          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart', id: 'gray-heart', remote: true do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        
+        <% else %>
+
+          <%= link_to favourites_yarn_path(@yarn), method: :delete, class: 'red-heart', id: 'red-heart', remote: true do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+          <%= link_to yarn_favourites_path(@yarn), method: :post, class: 'gray-heart', id: 'gray-heart', remote: true, style: 'display: none' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+
+        <% end %>
+
+        <%# <% end %> 
+        
         </div>
 
         <div class="chat-button">
           <% if @chatroom[0].nil? %>
-            <%= link_to 'Create the chat of this product', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
+            <%= link_to 'Create Help Chat', yarn_chatrooms_path(@yarn), method: :post, class: 'btn btn-primary' %>
           <% else %>
-            <%= link_to 'Open the chat of this product', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
+            <%= link_to 'Go to Help Chat', yarn_chatroom_path(yarn_id: @chatroom[0].yarn_id, id: @chatroom[0].id), method: :get, class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>

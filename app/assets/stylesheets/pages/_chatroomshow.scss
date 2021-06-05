@@ -1,9 +1,10 @@
-.card-chatroom{
+.card-chatroom {
   display: flex;
   justify-content: center;
   margin: 30px;
 }
-#messages{
+
+#messages {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,19 +13,27 @@
   background-color: white;
   //width: 800px;
   padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-.message-content{
+
+.message-content {
   font-weight: 400;
-  font-size: 20px;
-  font-family: fantasy;
+  font-size: 18px;
+  font-family: 'Prompt', sans-serif;
   color: #616161;
 }
-#chatroom-h1{
+#chatroom-h1 {
   text-align: center;
   color: #616161;
   margin-top: 20px;
+  font-size: 28px;
 }
+
 // .chat-send-message{
 //   display: flex;
 //   justify-content: center;
 // }
+
+.messages-list {
+
+}

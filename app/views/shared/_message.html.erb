@@ -1,0 +1,15 @@
+
+
+<div class="message-container" id="message-<%= message.id %>">
+      <i class="author">
+        <span><%= message.user.username %></span>
+        <% date_message = message.created_at - 3*60*60 %>
+        <small><%= date_message.strftime("%a %b %e at %l:%M%p") %></small>
+
+        <% if @message.user != current_user%>
+          <%= link_to "Delete", message_path(message), method: :delete, data: { confirm: "You are about to delete it!" }%>
+        <% end %>
+
+      </i>
+      <p class="message-content"><%= message.content %></p>
+</div>

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :favourites, only: [:new, :create]
     resources :chatrooms, only: [:new, :create, :show] do
       resources :messages, only: :create
-  end
+    end
+
+    member do 
+      delete :favourites, to: "favourites#destroy"
+    end
   end
   resources :users, only: :show
   resources :favourites, only: :destroy
@@ -15,4 +19,5 @@ Rails.application.routes.draw do
       get :my_gauges
     end
   end
+  resources :messages, only: :destroy
 end

@@ -5,7 +5,7 @@
 }
 
 .card-product {
-  margin-left: 30px;
+  margin-left: 20px;
   overflow: hidden;
   height: 200px;
   background: white;
@@ -13,7 +13,6 @@
   display: flex;
   align-items: flex-start;
   width: 400px;
-  border-radius: 10px;
 }
 
 .card-product img {
@@ -38,7 +37,7 @@
 
 .card-product .card-product-infos {
   padding: 10px;
-  position: relative;
+  width: 200px;
 }
 
 .card-product-infos h3 {

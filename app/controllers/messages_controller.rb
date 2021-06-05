@@ -18,6 +18,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    chatroom = message.chatroom
+    yarn = chatroom.yarn
+    message.destroy
+    # authorize @message
+    redirect_to yarn_chatroom_path(yarn, chatroom)
+  end
+
   private
 
   def message_params

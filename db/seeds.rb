@@ -26,7 +26,6 @@ yarn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
 Message.destroy_all
 Chatroom.destroy_all
 Favourite.destroy_all
-YarnGaugeSwatch.destroy_all
 YarnMaterial.destroy_all
 Yarn.destroy_all
 Brand.destroy_all

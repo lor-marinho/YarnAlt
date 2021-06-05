@@ -3,6 +3,9 @@ class Yarn < ApplicationRecord
   has_many :yarn_materials
   has_many :materials, through: :yarn_materials
 
+  has_many :yarn_gauge_swatches
+  has_many :gauge_swatches, through: :yarn_gauge_swatches
+
   include PgSearch::Model
   pg_search_scope :search_by_name,
   against: [ :name ],

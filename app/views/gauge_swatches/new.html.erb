@@ -1,0 +1,22 @@
+<h1 id="title-gs">Send your swatch!</h1>
+
+<div class="form-gauge-swatch">
+<%= form_for(@gauge_swatch) do |f| %>
+  <p class="label-gs"><%= f.label "Image:" %></p>
+  <p class="field-gs"><%= f.text_field :image_url%></p>
+  <p class="label-gs"><%= f.label "Gauge:" %></p>
+  <p class="field-gs"><%= f.text_field :gauge %></p>
+  <p class="label-gs"> <%= f.label "Needles:" %></p>
+  <p class="field-gs"><%= f.text_field :needles %></p>
+
+  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+  <%= select_tag 'Yarn', options_for_select(options), {:include_blank => 'Select an yarn'} %>
+  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+  <%= select_tag 'Yarn2', options_for_select(options), {:include_blank => 'Select another yarn'} %>
+  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+  <%= select_tag 'Yarn3', options_for_select(options), {:include_blank => 'Select another yarn'} %>
+
+  <%= f.submit %>
+<% end %>
+</div>
+

@@ -3,6 +3,7 @@
     <img src="<%= gauge_swatch.image_url %>" />
     <p>Gauge: <%= gauge_swatch.gauge %></p>
     <p>Needle: <%= gauge_swatch.needles %></p>
+    <p>Author: <%= gauge_swatch.user.username %></p>
     <%= link_to "Open this swatch", gauge_swatch_path(gauge_swatch) %>
   </div>
   <% end %>

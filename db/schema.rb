@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_233215) do
+ActiveRecord::Schema.define(version: 2021_06_05_205411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_06_03_233215) do
     t.string "image_url"
     t.string "gauge"
     t.string "needles"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_gauge_swatches_on_user_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -110,6 +112,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_233215) do
   add_foreign_key "chatrooms", "yarns"
   add_foreign_key "favourites", "users"
   add_foreign_key "favourites", "yarns"
+  add_foreign_key "gauge_swatches", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "yarn_gauge_swatches", "gauge_swatches"

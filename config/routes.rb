@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
   resources :favourites, only: :destroy
-  resources :gauge_swatches, only: [:new, :create, :show, :index]
+  resources :gauge_swatches, only: [:new, :create, :show, :index] do
+    collection do
+      get :my_gauges
+    end
+  end
 end

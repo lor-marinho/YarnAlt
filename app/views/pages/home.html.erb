@@ -16,6 +16,9 @@
 
 <%= render 'shared/search' %>
 
+<p><%= link_to "All Gauge Swatches", gauge_swatches_path %></p>
+<p><%= link_to "Create a Gauge Swatch", new_gauge_swatch_path %></p>
+
 
 <div class="grid-container">
   <% @yarns.limit(6).each do |yarn| %>

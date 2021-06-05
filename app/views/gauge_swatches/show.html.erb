@@ -1,9 +1,11 @@
 <img src="<%= @gauge.image_url %>" />
-
+<h2>Info:</h2>
 <p>Gauge: <%= @gauge.gauge %></p>
 <p>Needles: <%= @gauge.needles %></p>
 
+<h2>Yarns:</h2>
 <% @gauge.yarns.each do |t| %>
-<p><%= t.name %></p>
-<p><%= t.weight %></p>
+<p>Yarn Name: <%= t.name %></p>
+<p>Yarn Weight: <%= t.weight %></p>
 <% end %>
+

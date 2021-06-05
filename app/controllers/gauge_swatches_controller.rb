@@ -1,4 +1,8 @@
 class GaugeSwatchesController < ApplicationController
+  def index
+    @gauge_swatches = GaugeSwatch.all
+  end
+
   def new
     @yarn = Yarn.all
     @gauge_swatch = GaugeSwatch.new
@@ -10,7 +14,11 @@ class GaugeSwatchesController < ApplicationController
     @gauge.yarns << Yarn.find(params[:Yarn2]) if params[:Yarn2].present?
     @gauge.yarns << Yarn.find(params[:Yarn3]) if params[:Yarn3].present?
 
-    @gauge.save
+    if @gauge.save
+      redirect_to gauge_swatch_path(@gauge)
+    else
+      render new
+    end
   end
 
   def show

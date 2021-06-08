@@ -1,4 +1,5 @@
-<img src="<%= @gauge.image_url %>" />
+<%= cl_image_tag @gauge.image_url.key, height: 300, width: 400, crop: :fill %>
+
 <h2>Info:</h2>
 <p>Gauge: <%= @gauge.gauge %></p>
 <p>Needles: <%= @gauge.needles %></p>

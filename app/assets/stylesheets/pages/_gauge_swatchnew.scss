@@ -1,14 +1,68 @@
 .form-gauge-swatch{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  background-color: white;
+  width: 900px;
+  margin: 30px;
 }
 
 .label-gs {
-  width: 30px;
-  margin: 0;
+  margin-left: 10px;
+  margin-bottom: 2px;
 }
+
+.field-gs{
+  margin-left: 10px;
+}
+
 
 #title-gs{
   color: #616161;
+  text-align: center;
+}
+
+.image-upload > input
+{
+   display: none;
+}
+.image-upload > label{
+  cursor:pointer;
+}
+#button-upload {
+  border-style: solid;
+  border-width: thin;
+  padding: 5px;
+  background-color: #1EDD88;
+  margin-left: 10px;
+}
+
+.form-img-gauge-needle{
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 30px;
+  padding: 10px;
+}
+
+.form-yarn-gs{
+  margin: 30px;
+  display: flex;
+  // flex-direction: column;
+  padding: 5px;
+  justify-content: space-between;
+  width: 800px;
+}
+
+#option-gs{
+  margin: 10px;
+}
+
+.option-gs-field{
+  width: 200px;
+  margin: 10px;
+}
+
+.button-gs{
+  margin: 30px;
   text-align: center;
 }

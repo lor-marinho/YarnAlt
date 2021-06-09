@@ -2,21 +2,41 @@
 
 <div class="form-gauge-swatch">
 <%= form_for(@gauge_swatch) do |f| %>
-  <p class="label-gs"><%= f.label "Image:" %></p>
-  <p><%= f.file_field :image_url %></p>
-  <p class="label-gs"><%= f.label "Gauge:" %></p>
-  <p class="field-gs"><%= f.text_field :gauge %></p>
-  <p class="label-gs"> <%= f.label "Needles:" %></p>
-  <p class="field-gs"><%= f.text_field :needles %></p>
+  <div class="instructions">
+    <p>Please insert your image, the gauge and the needles:</p>
+  </div>
+  <div class="form-img-gauge-needle">
+    <p class="label-gs"><%= f.label "Select your image:" %></p>
+    <div class="image-upload">
+     <label for="file-input">
+       <span id="button-upload">Send Image</span >
+     </label>
 
-  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
-  <%= select_tag 'Yarn', options_for_select(options), {:include_blank => 'Select an yarn'} %>
-  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
-  <%= select_tag 'Yarn2', options_for_select(options), {:include_blank => 'Select another yarn'} %>
-  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
-  <%= select_tag 'Yarn3', options_for_select(options), {:include_blank => 'Select another yarn'} %>
+     <%= f.file_field :image_url, id:"file-input" %>
+    </div>
 
-  <%= f.submit %>
+      <p class="label-gs"><%= f.label "Gauge:" %></p>
+      <p class="field-gs"><%= f.text_field :gauge, style: "width: 80px" %></p>
+      <p class="label-gs"> <%= f.label "Needles:" %></p>
+      <p class="field-gs"><%= f.text_field :needles, style: "width: 80px" %></p>
+
+  </div>
+
+  <div class="instructions">
+    <p>And now choose up to three yarns:</p>
+  </div>
+
+  <div class="form-yarn-gs">
+    <% options = options_from_collection_for_select(@yarn, 'id', 'name')%>
+    <%= select_tag 'Yarn', options_for_select(options), {:include_blank => 'Select an yarn', class: 'option-gs-field'} %>
+    <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+    <%= select_tag 'Yarn2', options_for_select(options), {:include_blank => 'Select another yarn', class: 'option-gs-field'} %>
+    <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+    <%= select_tag 'Yarn3', options_for_select(options), {:include_blank => 'Select another yarn', class: 'option-gs-field'} %>
+  </div>
+
+
+  <div class="button-gs">  <%= f.submit %> </div>
 <% end %>
 </div>
 

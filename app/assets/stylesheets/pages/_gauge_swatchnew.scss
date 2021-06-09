@@ -32,7 +32,7 @@
   border-style: solid;
   border-width: thin;
   padding: 5px;
-  background-color: #1EDD88;
+  background-color: #8ac6d1;
   margin-left: 10px;
 }
 
@@ -65,4 +65,9 @@
 .button-gs{
   margin: 30px;
   text-align: center;
+}
+
+.container-new-gs{
+  display: flex;
+  justify-content: center;
 }

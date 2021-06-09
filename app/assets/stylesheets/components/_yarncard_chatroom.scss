@@ -1,0 +1,57 @@
+.card-product-chatroom {
+    margin-left: 20px;
+    overflow: hidden;
+    height: 200px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: flex-start;
+    width: 400px;
+  }
+  
+  .card-product-chatroom img {
+    height: 100%;
+    width: 200px;
+    object-fit: cover;
+  }
+  
+  .card-product-chatroom h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-product-chatroom p {
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 2px;
+  }
+  
+  .card-product-chatroom .card-product-infos {
+    padding: 10px;
+    width: 200px;
+  }
+  
+  .card-product-infos h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-product-infos h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .moreinfo {
+    font-size: 12px;
+    text-decoration: none !important;
+    color: black !important;
+  }
+  
+  .red-heart > i {
+    color: red;
+  }

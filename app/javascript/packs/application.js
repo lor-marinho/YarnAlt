@@ -33,6 +33,33 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   const redHeart = document.getElementById("red-heart")
   const grayHeart = document.getElementById("gray-heart")
+
+  // let redHearts = document.getElementsByClassName("red-heart")
+  // let grayHearts = document.getElementsByClassName("gray-heart")
+
+  // Array.from(redHearts).forEach(function(element) {
+  //   element.addEventListener("ajax:success", (event) => {
+  //   grayHeart.style.display = "block"
+  //   redHeart.style.display = "none"
+  // });
+
+// for (var i = 0; i < redHearts.length; i++) {
+//     redHearts[i].addEventListener("ajax:success", (event) => {
+//     grayHearts[i].style.display = "block"
+//     redHearts[i].style.display = "none"
+//   });
+// };
+
+// for (var i = 0; i < grayHearts.length; i++) {
+//       console.log(grayHearts[i])
+//       console.log(redHearts[i])
+//     grayHearts[i].addEventListener("ajax:success", (event) => {
+//       console.log("teste")
+//     redHearts[i].style.display = "block"
+//     grayHearts[i].style.display = "none"
+//   });
+// };
+
   grayHeart.addEventListener("ajax:success", (event) => {
     redHeart.style.display = "block"
     grayHeart.style.display = "none"

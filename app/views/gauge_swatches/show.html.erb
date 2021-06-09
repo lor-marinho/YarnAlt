@@ -1,0 +1,13 @@
+<%= cl_image_tag @gauge.image_url.key, height: 300, width: 400, crop: :fill %>
+
+<h2>Info:</h2>
+<p>Gauge: <%= @gauge.gauge %></p>
+<p>Needles: <%= @gauge.needles %></p>
+<p>User: <%= @gauge.user.username %></p>
+
+<h2>Yarns:</h2>
+<% @gauge.yarns.each do |t| %>
+<p>Yarn Name: <%= t.name %></p>
+<p>Yarn Weight: <%= t.weight %></p>
+<% end %>
+

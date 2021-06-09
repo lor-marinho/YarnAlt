@@ -1,0 +1,11 @@
+<h1>My gauges swatches</h1>
+<% unless (@my_gauge == []) %>
+    <% @my_gauge.each do |gauge_swatch| %>
+        <div style="border: solid; margin: 30px;">
+          <%= cl_image_tag gauge_swatch.image_url.key, height: 300, width: 400, crop: :fill %>
+          <p>Gauge: <%= gauge_swatch.gauge %></p>
+          <p>Needle: <%= gauge_swatch.needles %></p>
+          <%= link_to "Open this swatch", gauge_swatch_path(gauge_swatch) %>
+        </div>
+    <% end %>
+<% end %>

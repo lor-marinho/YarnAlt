@@ -16,6 +16,16 @@
 
 <%= render 'shared/search' %>
 
+<%= cl_image_tag("br7utvtjffz1vlrzas2d",
+      width: 400, height: 300, crop: :fill) %>
+
+      <%= cl_image_tag("wdfxlnzre3jvgyxqvgiv",
+      width: 150, height: 150, crop: :thumb, gravity: :face) %>
+
+<p><%= link_to "All Gauge Swatches", gauge_swatches_path %></p>
+<p><%= link_to "Create a Gauge Swatch", new_gauge_swatch_path %></p>
+<p><%= link_to "See my Gauges Swatches", my_gauges_gauge_swatches_path %></p>
+
 
 <div class="grid-container">
   <% @yarns.limit(6).each do |yarn| %>

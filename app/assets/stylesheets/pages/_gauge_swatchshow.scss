@@ -1,17 +1,18 @@
 .container-show-gs{
   display: flex;
   justify-content: center;
+  width: 800px;
 }
 
 .show-card-gs {
-    top: 40px;
+    top: 10px;
     background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     display: flex;
     width: 80vh;
-    height: 90vh;
+    height: 110vh;
     flex-direction: column;
-    margin: 50px;
+    margin: 10px;
 }
 
 .show-img-gs {
@@ -19,23 +20,23 @@
     // align-items: center;
     // top: 0;
     // position: absolute;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .show-img-gs img {
-    object-fit: fill;
-    height: 30vh;
+    object-fit: cover;
+    height: 50vh;
     width: 100%;
 }
 
 .show-card-infos-gs {
-    font-size: 20px;
-    margin: 30px;
+    font-size: 16px;
+    margin: 20px;
 }
 
 .show-card-infos-gs h2 {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .show-card-infos-gs h3 {

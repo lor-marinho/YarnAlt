@@ -1,8 +1,19 @@
 <h1 id="h1-gs">Gauge Swatches</h1>
 
+<div class="gauge-instructions">
+  Keep track of your test swatches online, by saving it's <strong>picture</strong>, <strong>yarn</strong> combination, <strong>gauge</strong> and <strong>needles</strong>.
+<br>
+  That will help you save space at home and get that yarn used for beautiful scrap projects instead.
+<br>
+<br>
+  Remember to <strong>wash</strong> your swatch before storing it's data.
+
+</div>
+
+
 <div class="buttons-gs-all">
   <%= link_to "Create a Gauge Swatch", new_gauge_swatch_path,  {:style=>'width:250px;', class: 'btn btn-primary'}  %>
-  <%= link_to "See my Gauges Swatches", my_gauges_gauge_swatches_path, {:style=>'width:250px;', class: 'btn btn-primary'}  %>
+  <%= link_to "See my Gauge Swatches", my_gauges_gauge_swatches_path, {:style=>'width:250px;', class: 'btn btn-primary'}  %>
 </div>
 <div class="grid-container">
   <% @gauge_swatches.each do |gauge_swatch| %>

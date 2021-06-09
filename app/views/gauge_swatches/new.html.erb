@@ -1,30 +1,39 @@
-<h1 id="title-gs">Send your swatch!</h1>
+<br>
+<h1 id="title-gs">Add your swatch!</h1>
+<div class="gauge-instructions">
+  Keep track of your test swatches online, by saving it's <strong>picture</strong>, <strong>yarn</strong> combination, <strong>gauge</strong> and <strong>needles</strong>.
+<br>
+  That will help you save space at home and get that yarn used for beautiful scrap projects instead.
+<br>
+<br>
+  Remember to <strong>wash</strong> your swatch before storing it's data.
 
+</div>
 <div class="container-new-gs">
   <div class="form-gauge-swatch">
   <%= form_for(@gauge_swatch) do |f| %>
     <div class="instructions">
-      <p>Please insert your image, the gauge and the needles:</p>
+      <p>Upload your image, add gauge and needles information:</p>
     </div>
     <div class="form-img-gauge-needle">
-      <p class="label-gs"><%= f.label "Select your image:" %></p>
+      <p class="label-gs"><%= f.label "Image Upload:" %></p>
       <div class="image-upload">
        <label for="file-input">
-         <span id="button-upload">Send Image</span >
+         <span id="button-upload">Select</span >
        </label>
 
        <%= f.file_field :image_url, id:"file-input" %>
       </div>
 
         <p class="label-gs"><%= f.label "Gauge:" %></p>
-        <p class="field-gs"><%= f.text_field :gauge, style: "width: 80px" %></p>
+        <p class="field-gs"><%= f.text_field :gauge, style: "width: 80px" %> sts. per 10 cm</p>
         <p class="label-gs"> <%= f.label "Needles:" %></p>
-        <p class="field-gs"><%= f.text_field :needles, style: "width: 80px" %></p>
+        <p class="field-gs"><%= f.text_field :needles, style: "width: 80px" %></p> mm.
 
     </div>
 
     <div class="instructions">
-      <p>And now choose up to three yarns:</p>
+      <p>Yarn(s) being used:</p>
     </div>
 
     <div class="form-yarn-gs">

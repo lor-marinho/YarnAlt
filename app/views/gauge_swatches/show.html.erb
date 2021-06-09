@@ -1,13 +1,28 @@
-<%= cl_image_tag @gauge.image_url.key, height: 300, width: 400, crop: :fill %>
+<h1 id="h1-gs">Here is the swatch</h1>
 
-<h2>Info:</h2>
-<p>Gauge: <%= @gauge.gauge %></p>
-<p>Needles: <%= @gauge.needles %></p>
-<p>User: <%= @gauge.user.username %></p>
+<div class="buttons-gs-all">
+  <%= link_to "Create a Gauge Swatch", new_gauge_swatch_path,  {:style=>'width:250px;', class: 'btn btn-primary'}  %>
+  <%= link_to "See my Gauges Swatches", my_gauges_gauge_swatches_path, {:style=>'width:250px;', class: 'btn btn-primary'}  %>
+</div>
 
-<h2>Yarns:</h2>
-<% @gauge.yarns.each do |t| %>
-<p>Yarn Name: <%= t.name %></p>
-<p>Yarn Weight: <%= t.weight %></p>
-<% end %>
+<div class="container-show-gs">
+  <div class="show-card-gs">
+    <div class="show-img-gs">
+      <%= cl_image_tag @gauge.image_url.key, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="show-card-infos-gs">
+      <h2>Informations:</h2>
+      <p><strong>Gauge: </strong><%= @gauge.gauge %></p>
+      <p><strong>Needles: </strong><%= @gauge.needles %></p>
+      <p><strong>User: </strong><%= @gauge.user.username %></p>
 
+      <h2>Yarns in this swatch:</h2>
+      <% i = 1  %>
+      <% @gauge.yarns.each do |t| %>
+        <p><strong>#<%= i %> Yarn Name: </strong><%= t.name %></p>
+        <p><strong>#<%= i %> Yarn Brand: </strong> <%= t.brand.name %></p>
+        <% i+=1  %>
+      <% end %>
+    </div>
+  </div>
+</div>

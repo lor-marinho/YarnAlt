@@ -1,0 +1,48 @@
+.container-show-gs{
+  display: flex;
+  justify-content: center;
+}
+
+.show-card-gs {
+    top: 40px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    width: 80vh;
+    height: 90vh;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.show-img-gs {
+    // width: 100%;
+    // align-items: center;
+    // top: 0;
+    // position: absolute;
+    margin-bottom: 20px;
+}
+
+.show-img-gs img {
+    object-fit: fill;
+    height: 30vh;
+    width: 100%;
+}
+
+.show-card-infos-gs {
+    font-size: 20px;
+    margin: 30px;
+}
+
+.show-card-infos-gs h2 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.show-card-infos-gs h3 {
+    font-size: 20px;
+}
+
+.show-card-infos-gs p {
+    opacity: 0.7;
+
+}

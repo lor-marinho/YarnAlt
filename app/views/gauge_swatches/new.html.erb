@@ -1,22 +1,52 @@
-<h1 id="title-gs">Send your swatch!</h1>
+<br>
+<h1 id="title-gs">Add your swatch!</h1>
+<div class="gauge-instructions">
+  Keep track of your test swatches online, by saving it's <strong>picture</strong>, <strong>yarn</strong> combination, <strong>gauge</strong> and <strong>needles</strong>.
+<br>
+  That will help you save space at home and get that yarn used for beautiful scrap projects instead.
+<br>
+<br>
+  Remember to <strong>wash</strong> your swatch before storing it's data.
 
-<div class="form-gauge-swatch">
-<%= form_for(@gauge_swatch) do |f| %>
-  <p class="label-gs"><%= f.label "Image:" %></p>
-  <p><%= f.file_field :image_url %></p>
-  <p class="label-gs"><%= f.label "Gauge:" %></p>
-  <p class="field-gs"><%= f.text_field :gauge %></p>
-  <p class="label-gs"> <%= f.label "Needles:" %></p>
-  <p class="field-gs"><%= f.text_field :needles %></p>
-
-  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
-  <%= select_tag 'Yarn', options_for_select(options), {:include_blank => 'Select an yarn'} %>
-  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
-  <%= select_tag 'Yarn2', options_for_select(options), {:include_blank => 'Select another yarn'} %>
-  <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
-  <%= select_tag 'Yarn3', options_for_select(options), {:include_blank => 'Select another yarn'} %>
-
-  <%= f.submit %>
-<% end %>
 </div>
+<div class="container-new-gs">
+  <div class="form-gauge-swatch">
+  <%= form_for(@gauge_swatch) do |f| %>
+    <div class="instructions">
+      <p>Upload your image, add gauge and needles information:</p>
+    </div>
+    <div class="form-img-gauge-needle">
+      <p class="label-gs"><%= f.label "Image Upload:" %></p>
+      <div class="image-upload">
+       <label for="file-input">
+         <span id="button-upload">Select</span >
+       </label>
 
+       <%= f.file_field :image_url, id:"file-input" %>
+      </div>
+
+        <p class="label-gs"><%= f.label "Gauge:" %></p>
+        <p class="field-gs"><%= f.text_field :gauge, style: "width: 80px" %> sts. per 10 cm</p>
+        <p class="label-gs"> <%= f.label "Needles:" %></p>
+        <p class="field-gs"><%= f.text_field :needles, style: "width: 80px" %></p> mm.
+
+    </div>
+
+    <div class="instructions">
+      <p>Yarn(s) being used:</p>
+    </div>
+
+    <div class="form-yarn-gs">
+      <% options = options_from_collection_for_select(@yarn, 'id', 'name')%>
+      <%= select_tag 'Yarn', options_for_select(options), {:include_blank => 'Select an yarn', class: 'option-gs-field'} %>
+      <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+      <%= select_tag 'Yarn2', options_for_select(options), {:include_blank => 'Select another yarn', class: 'option-gs-field'} %>
+      <% options = options_from_collection_for_select(@yarn, 'id', 'name') %>
+      <%= select_tag 'Yarn3', options_for_select(options), {:include_blank => 'Select another yarn', class: 'option-gs-field'} %>
+    </div>
+
+
+    <div class="button-gs">  <%= f.submit "Create Swatch", style: "background-color: #8ac6d1;" %> </div>
+  <% end %>
+  </div>
+</div>

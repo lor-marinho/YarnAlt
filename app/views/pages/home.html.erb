@@ -16,7 +16,6 @@
 
 <%= render 'shared/search' %>
 
-
 <div class="grid-container">
   <% @yarns.limit(6).each do |yarn| %>
     <%= render 'shared/yarn', yarn: yarn %>

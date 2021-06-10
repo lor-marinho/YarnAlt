@@ -57,7 +57,7 @@ body {
 }
 
 .grid-container {
-  margin: 20px;
+  margin: 12px;
 }
 
 .form-inline {
@@ -81,4 +81,17 @@ body {
   bottom: 10px;
   right: 10px;
 //   display:block;
+}
+
+.gauge-instructions {
+  margin: 30px;
+  text-align:center;
+  font-size: 18px;
+  font-family: 'Prompt', sans-serif;
+  opacity: .8;
+}
+
+.center {
+  margin: auto;
+  width: 1000px;
 }

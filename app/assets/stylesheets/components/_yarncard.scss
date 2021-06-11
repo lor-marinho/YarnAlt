@@ -1,7 +1,11 @@
 .grid-container {
-  margin: 10 10 10 10;
+  margin: 12px;
   display: grid;
   grid-template-columns: auto auto auto;
+}
+
+#gauge-container {
+  padding: 5px;
 }
 
 .card-product {

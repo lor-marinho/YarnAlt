@@ -1,3 +1,5 @@
+
+
 <h1 id="h1-gs">Gauge Swatches</h1>
 
 <div class="gauge-instructions">
@@ -15,7 +17,7 @@
   <%= link_to "Create a Gauge Swatch", new_gauge_swatch_path,  {:style=>'width:250px;', class: 'btn btn-primary'}  %>
   <%= link_to "See my Gauge Swatches", my_gauges_gauge_swatches_path, {:style=>'width:250px;', class: 'btn btn-primary'}  %>
 </div>
-<div class="grid-container">
+<div class="grid-container" id="gauge-container">
   <% @gauge_swatches.each do |gauge_swatch| %>
   <div class="card-product">
     <%= cl_image_tag gauge_swatch.image_url.key, height: 300, width: 400, crop: :fill %>

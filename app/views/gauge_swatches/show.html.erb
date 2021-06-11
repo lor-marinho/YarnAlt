@@ -21,10 +21,8 @@
       <p><strong>User: </strong><%= @gauge.user.username %></p>
 
       <h2>Yarns used in this swatch:</h2>
-      <% i = 1  %>
       <% @gauge.yarns.each do |t| %>
         <p><%= t.name %> by <%= t.brand.name %></p>
-        <% i+=1  %>
       <% end %>
     </div>
   </div>

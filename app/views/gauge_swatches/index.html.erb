@@ -25,7 +25,10 @@
       <p><strong> Gauge: </strong><%= gauge_swatch.gauge %></p>
       <p><strong> Needle: </strong><%= gauge_swatch.needles %></p>
       <p><strong>Author: </strong><%= gauge_swatch.user.username %></p>
-      <%= link_to "Open this swatch", gauge_swatch_path(gauge_swatch) %>
+      <p><strong>Yarns used:</strong></p>
+      <% gauge_swatch.yarns.each do |t| %>
+        <p><%= t.name %></p>
+      <% end %>
     </div>
   </div>
   <% end %>

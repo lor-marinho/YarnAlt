@@ -2,7 +2,8 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 90px 0;
+  // padding: 90px 0; old padding, keep for future use
+  padding: 120px 0;
 }
 
 .banner h1 {
@@ -95,4 +96,11 @@ body {
 .center {
   margin: auto;
   width: 1000px;
+}
+
+.waitforit-text {
+  margin: 40px;
+  font-size: 14px;
+  font-family: 'Prompt', sans-serif;
+  opacity: .6;
 }

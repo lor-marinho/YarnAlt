@@ -11,7 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-          <%= link_to "Home", "#", class: "nav-link" %>
+          <%= link_to "Home", yarns_path, class: "nav-link" %>
         </li> -->
         <div class="logged-nav">
           <li class="nav-item"> You are logged as <%= current_user.username %> </li>

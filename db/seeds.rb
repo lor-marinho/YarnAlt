@@ -5,17 +5,29 @@ require 'awesome_print'
 
 auth = { username: ENV['API_USERNAME'], password: ENV['API_PASSWORD'] }
 
+
+
 def get_yarn_list(brand, auth)
   response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=#{brand}", basic_auth: auth)
-  response_body = JSON.parse(response.body)
-  yarn_ids = response_body.fetch('yarns').map { |i| i['id'] }
-  yarn_list = get_yarns(yarn_ids, auth)
+  last_page = response["paginator"]["last_page"]
+  yarn_list = []
+  for page in 1..last_page 
+    response = HTTParty.get("https://api.ravelry.com/yarns/search.json?query=#{brand}&page=#{page}", basic_auth: auth)
+    response_body = JSON.parse(response.body)
+    puts "metodo 1 #{page}-#{brand}"
+    yarn_ids = response_body.fetch('yarns').map { |i| i['id'] }
+    if !yarn_ids.empty?
+      yarn_list << get_yarns(yarn_ids, auth)
+    end
+  end
+  return yarn_list
 end
 
 def get_yarns(yarn_ids, auth)
   list = []
   response = HTTParty.get("https://api.ravelry.com/yarns.json?ids=#{yarn_ids.join('+')}", basic_auth: auth)
   response_body = JSON.parse(response.body)
+  puts "metodo 2"
   response_body.fetch('yarns').map { |_k, v| list << v }
   list
 end

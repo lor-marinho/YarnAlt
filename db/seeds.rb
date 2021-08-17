@@ -32,7 +32,7 @@ def get_yarns(yarn_ids, auth)
   list
 end
 
-YARN_BRANDS = %w[garnstudio fios%20pingouin filcolana circulo sandnesgarn].freeze
+YARN_BRANDS = %w[garnstudio fios%20pingouin filcolana circulo sandnesgarn hjertegarn].freeze
 yarn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
 # ap yarn_list.first
 Message.destroy_all
@@ -94,6 +94,9 @@ circulo.update(location: "South America")
 
 pingouin = Brand.where(name: "Fios Pingouin")
 pingouin.update(location: "South America")
+
+hjertegarn = Brand.where(name: "Hjertegarn")
+hjertegarn.update(location: "Europe")
 
 # creating users
 User.destroy_all

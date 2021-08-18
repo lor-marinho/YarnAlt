@@ -14,7 +14,7 @@
         <p><strong>Weight: </strong> <%= @yarn.weight %></p>
         <p><strong>Gauge: </strong> <%= @yarn.gauge %> sts</p>
         <p><strong>Fiber: </strong> <% @yarn.materials.each do |material| %>
-        <%= material.percentage %>% <%= material.fiber_type%>
+        <%= material.percentage %>% <%= material.fiber_type %>
         <% end %>
 
         </p>

@@ -19,6 +19,8 @@ def get_yarn_list(brand, auth)
     if !yarn_ids.empty?
       yarn_list << get_yarns(yarn_ids, auth)
     end
+    puts "Sleeping for 5 secs"
+    sleep(5)
   end
   return yarn_list
 end
@@ -38,12 +40,13 @@ yarn_list = YARN_BRANDS.map { |brand| get_yarn_list(brand, auth) }.flatten!
 Message.destroy_all
 Chatroom.destroy_all
 Favourite.destroy_all
-YarnMaterial.destroy_all
-Yarn.destroy_all
-Brand.destroy_all
+# YarnMaterial.destroy_all
+Yarn_gau
+# Yarn.destroy_all
+# Brand.destroy_all
 
 
-
+count = 0
 yarn_list.each do |yarn_data|
 #   # AQUI VAI A LÓGICA PARA CRIAR O YARN E O QUE MAIS QUISEREM. O yarn_list é uma lista de hashs
 
@@ -54,6 +57,7 @@ yarn_list.each do |yarn_data|
   weight = yarn_data['yarn_weight']['name'] if yarn_data['yarn_weight']
   discontinued = yarn_data['discontinued']
   image_url = yarn_data['photos'][0]['medium_url'] if yarn_data['photos'][0]
+  next if Yarn.find_by(name: yarn_data['name'], brand: brand).present?
   yarn = Yarn.new(
     name: yarn_data['name'],
     needles: needles,
@@ -65,7 +69,7 @@ yarn_list.each do |yarn_data|
   )
   # create materials
   yarn_data['yarn_fibers'].each do |fiber|
-    material = Material.create_or_find_by(
+    material = Material.find_or_create_by(
       percentage: fiber['percentage'],
       fiber_type: fiber["fiber_type"]["name"]
 
@@ -77,7 +81,9 @@ yarn_list.each do |yarn_data|
 
   yarn.save!
   puts "OK: yarn #{yarn.id} - #{yarn.name} created"
+ count += 1
 end
+puts "Created #{count} yarns."
 
 #setting locations for brands
 garnstudio = Brand.where(name: "Garnstudio")

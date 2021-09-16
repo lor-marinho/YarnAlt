@@ -41,7 +41,6 @@ Message.destroy_all
 Chatroom.destroy_all
 Favourite.destroy_all
 # YarnMaterial.destroy_all
-Yarn_gau
 # Yarn.destroy_all
 # Brand.destroy_all
 
